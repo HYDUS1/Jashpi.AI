@@ -4,6 +4,7 @@ const http=require('http'),fs=require('fs'),path=require('path'),crypto=require(
 const T=process.env.BOT_TOKEN,PORT=process.env.PORT||3000;
 if(!T)console.error('!! Add BOT_TOKEN in Replit Secrets');
 const SEC=T?crypto.createHash('sha256').update(T).digest('hex').slice(0,32):'';
+const find=n=>[__dirname,path.join(__dirname,'public'),process.cwd()].map(d=>path.join(d,n)).find(p=>fs.existsSync(p));
 const TRK=new Map(),TRKPAGE=`<!doctype html><meta name=viewport content="width=device-width,initial-scale=1"><title>JASHPI live location</title><body style="margin:0;font-family:sans-serif;background:#070b1a;color:#fff"><div style="padding:12px"><b id=n>JASHPI live location</b><div id=s style="opacity:.7;font-size:13px">Loading...</div></div><iframe id=m style="border:0;width:100%;height:80vh"></iframe><script>const id=location.pathname.split('/').pop();let last='';async function f(){try{const j=await(await fetch('/track/'+id)).json();if(!j.ok)throw 0;n.textContent=j.name+' - live location';s.textContent='Updated '+Math.round((Date.now()-j.t)/1000)+'s ago';const u='https://maps.google.com/maps?q='+j.lat+','+j.lng+'&z=16&output=embed';if(u!=last){m.src=u;last=u}}catch(e){s.textContent='Not available yet - retrying'}}f();setInterval(f,8000)</script>`;
 const tg=(m,b)=>fetch(`https://api.telegram.org/bot${T}/${m}`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)});
 const hits=new Map(),rl=(k,max,ms)=>{const n=Date.now(),a=(hits.get(k)||[]).filter(t=>n-t<ms);a.push(n);hits.set(k,a);return a.length>max};
@@ -22,7 +23,7 @@ http.createServer(async(req,res)=>{const u=req.url.split('?')[0];
    if(!/^-?\d{4,15}$/.test(String(chat_id))||typeof text!=='string'||text.length>1000||!/^(🚨 )?JASHPI/.test(text))return out(res,400,{ok:false});
    const r=await tg('sendMessage',{chat_id,text});return out(res,r.ok?200:502,await r.json())}catch(e){return out(res,400,{ok:false})}}
  if(u==='/manifest.json'){res.writeHead(200,{'Content-Type':'application/manifest+json',...CORS});return res.end(JSON.stringify({id:'/',name:'JASHPI AI',short_name:'JASHPI',start_url:'/',scope:'/',display:'standalone',background_color:'#070b1a',theme_color:'#070b1a',icons:[{src:'/icon-192.webp',sizes:'192x192',type:'image/webp',purpose:'any'},{src:'/icon-512.webp',sizes:'512x512',type:'image/webp',purpose:'any'}],shortcuts:[['SOS Now','sos'],['Silent SOS','silent'],['Start Listening','listen'],['Fake Call','fake']].map(([n,a])=>({name:n,short_name:n,url:'/?a='+a}))}))}
- if(u==='/icon-192.webp'||u==='/icon-512.webp'){try{const h=fs.readFileSync(path.join(__dirname,'index.html'),'utf8'),m=h.match(/window\.IC=\{b:"data:image\/webp;base64,([^"]+)",s:"data:image\/webp;base64,([^"]+)"\}/);res.writeHead(200,{'Content-Type':'image/webp','Cache-Control':'max-age=86400'});return res.end(Buffer.from(m[u.includes('512')?1:2],'base64'))}catch(e){return out(res,404,{})}}
+ if(u==='/icon-192.webp'||u==='/icon-512.webp'){try{const h=fs.readFileSync(find('index.html'),'utf8'),m=h.match(/window\.IC=\{b:"data:image\/webp;base64,([^"]+)",s:"data:image\/webp;base64,([^"]+)"\}/);res.writeHead(200,{'Content-Type':'image/webp','Cache-Control':'max-age=86400'});return res.end(Buffer.from(m[u.includes('512')?1:2],'base64'))}catch(e){return out(res,404,{})}}
  if(u==='/track'&&req.method==='POST'){const ip=(req.headers['x-forwarded-for']||req.socket.remoteAddress||'').split(',')[0].trim();if(rl('t'+ip,80,60000))return out(res,429,{ok:false});
   try{const b=JSON.parse(await body(req));if(!/^[a-z0-9]{8,16}$/.test(b.id)||!isFinite(b.lat)||!isFinite(b.lng))return out(res,400,{ok:false});const n=Date.now();for(const[k,x]of TRK)if(n-x.t>216e5)TRK.delete(k);if(TRK.size>2000)return out(res,503,{ok:false});TRK.set(b.id,{lat:+b.lat,lng:+b.lng,name:String(b.name||'').slice(0,40),t:n});return out(res,200,{ok:true})}catch(e){return out(res,400,{ok:false})}}
  if(u.startsWith('/track/')){const x=TRK.get(u.slice(7));return x?out(res,200,{ok:true,...x}):out(res,404,{ok:false})}
@@ -41,8 +42,9 @@ http.createServer(async(req,res)=>{const u=req.url.split('?')[0];
   if(req.headers['x-telegram-bot-api-secret-token']!==SEC)return out(res,403,{});
   try{const m=JSON.parse(await body(req)).message;if(m&&m.chat)await tg('sendMessage',{chat_id:m.chat.id,text:`JASHPI AI\nYour Telegram chat ID: ${m.chat.id}\n\nPaste it in the app > Settings > "Your Telegram chat ID", or give it to the person who should receive alerts.`})}catch(e){}
   return out(res,200,{})}
- const f=u==='/'||u==='/index.html'?'index.html':u==='/sw.js'?'sw.js':null,p=f&&path.join(__dirname,f);
- if(p&&fs.existsSync(p)){res.writeHead(200,{'Content-Type':f.endsWith('.js')?'text/javascript':'text/html; charset=utf-8','Cache-Control':'no-cache'});return fs.createReadStream(p).pipe(res)}
+ const f=u==='/'||u==='/index.html'?'index.html':u==='/sw.js'?'sw.js':null,p=f&&find(f);
+ if(p){res.writeHead(200,{'Content-Type':f.endsWith('.js')?'text/javascript':'text/html; charset=utf-8','Cache-Control':'no-cache'});return fs.createReadStream(p).pipe(res)}
+ if(u==='/'){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});return res.end('<body style="font-family:sans-serif;padding:20px"><h2>JASHPI server is running</h2><p>But <b>index.html</b> was not found next to server.js. Put index.html and sw.js in the same folder as server.js (repo root), then redeploy.</p><p>Bot status: <a href="/health">/health</a></p>')}
  out(res,404,{ok:false})
 }).listen(PORT,'0.0.0.0',async()=>{console.log('JASHPI running on',PORT);
  const h=process.env.PUBLIC_URL||process.env.RENDER_EXTERNAL_URL||(process.env.RAILWAY_PUBLIC_DOMAIN&&'https://'+process.env.RAILWAY_PUBLIC_DOMAIN)||(process.env.REPLIT_DOMAINS&&'https://'+process.env.REPLIT_DOMAINS.split(',')[0]);
