@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: jashpi-ai
+    runtime: node
+    plan: free
+    buildCommand: echo ok
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: TWILIO_SID
+        sync: false
+      - key: TWILIO_TOKEN
+        sync: false
+      - key: TWILIO_FROM
+        sync: false
