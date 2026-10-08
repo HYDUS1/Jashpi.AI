@@ -42,8 +42,8 @@ import java.util.regex.Pattern;
 public class WakeWordService extends Service implements RecognitionListener {
     public static final String CHANNEL = "jashpi_listen";
     private static final int NOTIF_ID = 4107;
-    private static final Pattern WAKE = Pattern.compile("hello\\s*j[ae]s?h?\\s*p[iy]|hello\\s*jaspi|हैलो\\s*ज[शस]्?पी");
-    private static final Pattern BACHAO = Pattern.compile("bacha+o|bachav|बचाओ|बचाव");
+    private static final Pattern WAKE = Pattern.compile("(hello|helo|hallo|hailo|हैलो|हेलो|हलो)\\s*(jash|jas|jaish|जश|जस|जैश|जैस)\\s*(p|b|्?प|्?ब)\\s*(i|y|ee|ी|ि)?");
+    private static final Pattern BACHAO = Pattern.compile("bacha+o|bachau|bachav|bacho\\b|बचाओ|बचाव|बचाऊ");
     private static final Pattern HELP = Pattern.compile("\\bhelp\\b|हेल्प|madad|madat|मदद");
 
     private final Handler main = new Handler(Looper.getMainLooper());
@@ -98,9 +98,9 @@ public class WakeWordService extends Service implements RecognitionListener {
         sr.setRecognitionListener(this);
         Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-IN");
+        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "hi-IN");
+        i.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 5);
         i.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
-        i.putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, true);
         i.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getPackageName());
         mute(true);
         lastB = 0; lastH = 0;
@@ -118,20 +118,25 @@ public class WakeWordService extends Service implements RecognitionListener {
     private void handle(Bundle b) {
         ArrayList<String> r = b.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
         if (r == null || r.isEmpty()) return;
-        String t = r.get(0).toLowerCase();
         long now = System.currentTimeMillis();
-        if (WAKE.matcher(t).find()) { fire("wake word", false); return; }
-        lastB = count(BACHAO, t, bachao, lastB, now);
-        lastH = count(HELP, t, help, lastH, now);
+        int nb = 0, nh = 0;
+        for (String raw : r) {                       // check every alternative the engine heard
+            String t = raw.toLowerCase();
+            if (WAKE.matcher(t).find()) { fire("wake word", false); return; }
+            nb = Math.max(nb, occurrences(BACHAO, t));
+            nh = Math.max(nh, occurrences(HELP, t));
+        }
+        for (int j = lastB; j < nb; j++) bachao.add(now);
+        for (int j = lastH; j < nh; j++) help.add(now);
+        lastB = Math.max(lastB, nb); lastH = Math.max(lastH, nh);
         prune(bachao, now); prune(help, now);
         if (bachao.size() >= 3) { bachao.clear(); fire("bachao x3", false); }
         else if (help.size() >= 3) { help.clear(); fire("help / madad x3", false); }
     }
 
-    private int count(Pattern p, String t, List<Long> hits, int prev, long now) {
+    private int occurrences(Pattern p, String t) {
         Matcher m = p.matcher(t); int n = 0;
         while (m.find()) n++;
-        for (int j = prev; j < n; j++) hits.add(now);
         return n;
     }
 

@@ -9,6 +9,8 @@ services:
     envVars:
       - key: BOT_TOKEN
         sync: false
+      - key: POLLINATIONS_KEY
+        sync: false
       - key: DATA_DIR
         value: /data
     disk:

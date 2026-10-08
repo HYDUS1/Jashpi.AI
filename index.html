@@ -4,45 +4,51 @@
 <meta name="theme-color" content="#0B1030"><title>JASHPI AI</title>
 <link rel="icon" id="fav"><link rel="manifest" id="mf"><link rel="apple-touch-icon" id="ati">
 <style>
-:root{--ink:#0B1030;--card:#151B47;--line:#262e66;--tx:#EEF1FF;--mu:#9aa3d6;--b:#2F6BFF;--c:#19D3F2;--v:#8B5CF6;--r:#FF3D5A;--g:linear-gradient(135deg,var(--b),var(--c) 50%,var(--v))}
-html{overscroll-behavior:none}body:has(.ov.s){overflow:hidden}body{touch-action:manipulation}
+:root{--ink:#0B1030;--card:#151B47;--line:#2a3370;--tx:#EEF1FF;--mu:#9aa3d6;--b:#2F6BFF;--c:#19D3F2;--v:#8B5CF6;--r:#FF3D5A;--g:linear-gradient(135deg,var(--b),var(--c) 50%,var(--v))}
+html{overscroll-behavior:none}body:has(.ov.s){overflow:hidden}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--ink);color:var(--tx);font:16px/1.45 "Avenir Next","Segoe UI",system-ui,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-main{max-width:520px;margin:0 auto;padding:14px 16px 96px}
-h2{font-size:22px;margin:6px 0 12px}h3{margin:0 0 6px;font-size:16px}
-.bar{display:flex;align-items:center;gap:10px;padding:6px 0 10px}.bar b{font-size:18px;letter-spacing:.3px}
-.chip{margin-left:auto;font-size:13px;padding:4px 10px;border-radius:99px;background:var(--card);border:1px solid var(--line)}
-.chip.on{border-color:var(--c);color:var(--c)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin:12px 0}
-.mu{color:var(--mu);font-size:14px}
-button,input,textarea{font:inherit;color:inherit}
-input,textarea{width:100%;background:#0d1238;border:1px solid var(--line);border-radius:12px;padding:12px;margin:6px 0}
-button{border:0;border-radius:12px;padding:12px 16px;background:var(--g);color:#fff;font-weight:600;cursor:pointer}
-button.g{background:#222a5e}button.d{background:var(--r)}button:active{transform:scale(.97)}
+body{margin:0;touch-action:manipulation;background:radial-gradient(800px 480px at 85% -8%,#3a2b8a66,transparent),radial-gradient(640px 400px at -10% 6%,#19D3F233,transparent),var(--ink);color:var(--tx);font:16px/1.45 "Avenir Next","Segoe UI",system-ui,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);min-height:100vh}
+main{max-width:520px;margin:0 auto;padding:12px 16px 100px}
+h2{font-size:22px;margin:6px 0 12px}h3{margin:0 0 8px;font-size:16px}
+.bar{display:flex;align-items:center;gap:10px;padding:6px 0 10px}.bar b{font-size:20px;letter-spacing:.5px}.bar i{font-style:normal;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chip{margin-left:auto;font-size:13px;padding:5px 12px;border-radius:99px;background:#ffffff0d;border:1px solid var(--line)}.chip.on{border-color:var(--c);color:var(--c);box-shadow:0 0 14px #19d3f244}
+.card{background:linear-gradient(160deg,#1a2152,#121744);border:1px solid var(--line);border-radius:20px;padding:14px;margin:12px 0}
+.mu{color:var(--mu);font-size:14px}.hi{margin:2px 0 0;font-size:18px;font-weight:600}
+button,input,textarea,select{font:inherit;color:inherit}
+input,textarea,select{width:100%;background:#0d1238;border:1px solid var(--line);border-radius:12px;padding:12px;margin:6px 0;outline:none}input:focus,textarea:focus{border-color:var(--c)}
+button{border:0;border-radius:14px;padding:12px 16px;background:var(--g);color:#fff;font-weight:600;cursor:pointer}
+button.g{background:#232b62}button.d{background:var(--r)}button:active{transform:scale(.97)}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.row>*{flex:1}
-.hero{display:grid;place-items:center;padding:18px 0 6px}
-.ring{width:236px;height:236px;border-radius:50%;padding:7px;background:conic-gradient(var(--b),var(--c),var(--v),var(--b));display:grid;place-items:center}
-.ring.live{animation:spin 6s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-.sosb{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff7088,var(--r) 60%,#c4163a);display:grid;place-items:center;font-size:44px;font-weight:800;letter-spacing:2px;box-shadow:0 0 40px #ff3d5a66;animation:none}
-.ring.live .sosb{animation:cnt 6s linear infinite reverse}@keyframes cnt{to{transform:rotate(360deg)}}
-.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tg div{background:#0d1238;border-radius:12px;padding:10px;text-align:center;font-size:13px}.tg b{display:block;font-size:20px}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#0e1440ee;backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
-nav button{flex:1;background:none;border-radius:0;padding:12px 1px;font-size:12px;color:var(--mu)}nav button.a{color:var(--c)}
-.ov{height:100dvh;position:fixed;inset:0;background:#0B1030f2;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;gap:14px;overflow:auto}.ov.s{display:flex}
-.big{font-size:96px;font-weight:800}.opt{width:100%;max-width:340px;padding:18px;font-size:20px}
-.ct{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}.ct span{flex:1}
-.cal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;max-width:340px}.cal button{background:#222a5e;font-size:24px;padding:16px 0}.cal button:active{transform:none;filter:brightness(1.4)}.cal button.o{background:#ff9f0a}
-#disp{width:100%;max-width:340px;text-align:right;font-size:48px;min-height:64px;overflow:hidden}
-a.btn{display:block;text-align:center;text-decoration:none;color:#fff;background:#222a5e;padding:12px;border-radius:12px;font-weight:600}
-details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0;padding:12px 14px}summary{font-weight:700;cursor:pointer}
-.gi{width:100%;aspect-ratio:8/5;border-radius:12px;margin-top:10px;background:linear-gradient(90deg,#1b2260,#2a3382,#1b2260);background-size:200% 100%;animation:sh 1.4s linear infinite;object-fit:cover;opacity:.9}.gi.ok{animation:pop .7s ease both;background:none}
-@keyframes sh{to{background-position:-200% 0}}@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
-details[open] li{animation:up .5s ease both}details li:nth-child(2){animation-delay:.1s}details li:nth-child(3){animation-delay:.2s}details li:nth-child(4){animation-delay:.3s}@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.heart{font-size:64px;text-align:center}.heart.b{animation:beat .545s ease-in-out infinite}@keyframes beat{50%{transform:scale(1.25)}}
-.tl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tl button{padding:16px 8px}
+.hero{display:grid;place-items:center;padding:14px 0 4px}
+.ring{position:relative;width:240px;height:240px}
+.ring:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--b),var(--c),var(--v),var(--b));animation:spin 6s linear infinite paused}.ring.live:before{animation-play-state:running}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rp{position:absolute;inset:0;border-radius:50%;border:2px solid var(--r);opacity:0}.ring.live .rp{animation:rip 2.4s ease-out infinite}.rp.r2{animation-delay:1.2s!important}
+@keyframes rip{from{transform:scale(.95);opacity:.7}to{transform:scale(1.55);opacity:0}}
+.sosb{position:absolute;inset:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff7088,var(--r) 60%,#c4163a);font-size:46px;font-weight:800;letter-spacing:3px;box-shadow:0 0 50px #ff3d5a77,inset 0 -10px 30px #0004}
+.heard{min-height:46px;text-align:center;font-size:18px;color:var(--c);padding:8px 4px;word-break:break-word}.heard.f{animation:fl .8s}@keyframes fl{0%{color:#fff;text-shadow:0 0 20px var(--c)}}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tg div{background:#0d1238;border-radius:14px;padding:10px 4px;text-align:center;font-size:12px;color:var(--mu)}.tg b{display:block;font-size:22px;color:var(--tx)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.grid4 button{background:#1d2558;padding:12px 2px;font-size:12px;line-height:1.3}.grid4 span{display:block;font-size:24px}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#0e1440ee;backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:5}
+nav button{flex:1;background:none;border-radius:0;padding:10px 1px;font-size:11px;color:var(--mu)}nav button.a{color:var(--c)}nav span{display:block;font-size:20px}
+.ov{height:100dvh;position:fixed;inset:0;background:#0B1030f5;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;gap:12px;overflow:auto}.ov.s{display:flex}
+#sirbar{position:fixed;top:0;left:0;right:0;z-index:30;background:var(--r);display:none;align-items:center;justify-content:space-between;padding:calc(8px + env(safe-area-inset-top)) 14px 8px;font-weight:700}#sirbar.s{display:flex}#sirbar button{background:#fff;color:var(--r)}
+.big{font-size:96px;font-weight:800}.opt{width:100%;max-width:340px;padding:16px;font-size:19px}
+.ct{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}.ct span{flex:1}.ct .btn{width:auto;padding:10px 12px}
+a.btn{display:block;text-align:center;text-decoration:none;color:#fff;background:#232b62;padding:12px;border-radius:14px;font-weight:600}
+.gg{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gc{background:linear-gradient(160deg,#1f2760,#151b47);border:1px solid var(--line);padding:16px 8px;font-size:15px}.gc .em{display:block;font-size:40px;animation:beat 1.6s ease-in-out infinite}
+.heart{font-size:64px;text-align:center}.heart.b{animation:beat .545s ease-in-out infinite}@keyframes beat{50%{transform:scale(1.22)}}
+.imgbox{position:relative;width:100%;aspect-ratio:8/5;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#1b2260,#3a2b8a);margin:8px 0}
+.imgbox .em{position:absolute;inset:0;display:grid;place-items:center;font-size:90px;animation:beat 1.2s ease-in-out infinite}
+.imgbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}.imgbox img.ok{opacity:1;animation:kb 14s ease-in-out infinite alternate}@keyframes kb{to{transform:scale(1.15) translate(-2%,-2%)}}
+.dots{display:flex;gap:6px;justify-content:center;margin:10px 0}.dots i{width:30px;height:5px;border-radius:9px;background:#2a3382;transition:.4s}.dots i.on{background:var(--c)}
+.stp{min-height:92px;animation:up .5s ease both}@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tl button,.tl a{padding:18px 8px;font-size:15px}
+.cal{display:grid}
 pre{white-space:pre-wrap;font:12px/1.4 monospace;max-height:160px;overflow:auto}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style></head><body>
+<div id="sirbar"><span>🔊 Siren ON</span><button onclick="stopAlarm()">STOP</button></div>
 <main id="app"></main>
 <nav id="nav"></nav>
 <div class="ov" id="ov"></div>
@@ -51,9 +57,9 @@ pre{white-space:pre-wrap;font:12px/1.4 monospace;max-height:160px;overflow:auto}
 const $=s=>document.querySelector(s),LS=localStorage;
 let S={};try{S=JSON.parse(LS.jashpi||'{}')}catch(e){}
 const APP=!!window.Jashpi;
-const save=()=>{LS.jashpi=JSON.stringify(S);if(APP)try{Jashpi.sync(JSON.stringify({name:S.name||'',relay:RELAY(),code:S.code||'',contacts:S.contacts||[],tg:S.tg||[]}))}catch(e){}};
 const DEV_HASH="b78605546bc3b88494e31389be3b03fa447bc4cda8107658504f917fe02c3d8c";
 const RELAY=()=>(S.relay||location.origin).replace(/\/$/,'');
+const save=()=>{LS.jashpi=JSON.stringify(S);if(APP)try{Jashpi.sync(JSON.stringify({name:S.name||'',relay:RELAY(),code:S.code||'',contacts:S.contacts||[],tg:S.tg||[]}))}catch(e){}};
 const rnd=n=>[...crypto.getRandomValues(new Uint8Array(n))].map(b=>'abcdefghijkmnpqrstuvwxyz23456789'[b%32]).join('');
 const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(b=>b.toString(16).padStart(2,'0')).join('');
 const LOG=[];const log=m=>{LOG.unshift(new Date().toLocaleTimeString()+' '+m);LOG.length=40;const e=$('#log');if(e)e.textContent=LOG.join('\n')};
@@ -61,175 +67,195 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 
 /* ---------- language ---------- */
 const TX={
-en:{tl:'Tools',sos:'SOS',home:'Home',ct:'Contacts',gd:'Guide',ai:'Ask AI',st:'Settings',lis:'Listening',off:'Mic off',msg:'is not safe, problem, location:',cancel:'Cancel',ok:"I'm OK",sending:'Sending SOS in',name:'What is your name?',go:'Continue',tap:'Tap to start listening',add:'Add contact',nm:'Name',ph:'Phone with country code',tgl:'Link Telegram contact',askp:'Ask a safety question',send:'Ask',key:'Your Gemini API key',sent:'SOS sent',call:'Call',fall:'Fall detected. Are you OK?',steps:['Move to a lit, crowded place.','Call 112 or press SOS.','Share live location with family.','Stay on call; do not hide your phone.','Note vehicle number, place, faces.'],sys:'Reply in English.'},
-hi:{tl:'टूल्स',sos:'SOS',home:'होम',ct:'संपर्क',gd:'गाइड',ai:'AI से पूछें',st:'सेटिंग',lis:'सुन रहा है',off:'माइक बंद',msg:'सुरक्षित नहीं है, मुसीबत में है, लोकेशन:',cancel:'रद्द करें',ok:'मैं ठीक हूँ',sending:'SOS भेजा जाएगा',name:'आपका नाम क्या है?',go:'आगे बढ़ें',tap:'सुनना शुरू करने के लिए टैप करें',add:'संपर्क जोड़ें',nm:'नाम',ph:'देश कोड सहित फ़ोन',tgl:'टेलीग्राम संपर्क जोड़ें',askp:'सुरक्षा का सवाल पूछें',send:'पूछें',key:'आपकी Gemini API key',sent:'SOS भेज दिया गया',call:'कॉल',fall:'गिरने का पता चला। क्या आप ठीक हैं?',steps:['रोशनी वाली, भीड़ वाली जगह पर जाएँ।','112 पर कॉल करें या SOS दबाएँ।','परिवार को लाइव लोकेशन भेजें।','कॉल चालू रखें, फ़ोन छुपाएँ नहीं।','गाड़ी नंबर, जगह और चेहरे याद रखें।'],sys:'Reply in Hindi (Devanagari).'},
-hn:{tl:'Tools',sos:'SOS',home:'Home',ct:'Contacts',gd:'Guide',ai:'AI se pucho',st:'Settings',lis:'Sun raha hai',off:'Mic band',msg:'safe nahi hai, problem mein hai, location:',cancel:'Cancel',ok:'Main theek hoon',sending:'SOS bhejne mein',name:'Aapka naam kya hai?',go:'Aage badhein',tap:'Sunna shuru karne ke liye tap karein',add:'Contact jodein',nm:'Naam',ph:'Country code ke saath phone',tgl:'Telegram contact jodein',askp:'Safety ka sawal pucho',send:'Pucho',key:'Aapki Gemini API key',sent:'SOS bhej diya',call:'Call',fall:'Girne ka pata chala. Kya aap theek hain?',steps:['Roshni wali, bheed wali jagah jaayein.','112 par call karein ya SOS dabayein.','Family ko live location bhejein.','Call chalu rakhein, phone chhupayein nahi.','Gaadi number, jagah aur chehre yaad rakhein.'],sys:'Reply in Hinglish (Hindi in Roman letters).'}};
+en:{sos:'SOS',home:'Home',ct:'Contacts',gd:'Guide',tl:'Tools',ai:'Ask AI',st:'Settings',lis:'Listening',off:'Mic off',msg:'is not safe, problem, location:',cancel:'Cancel',ok:"I'm OK",sending:'Sending SOS in',name:'What is your name?',go:'Continue',tap:'Tap to start listening',add:'Add contact',nm:'Name',ph:'Phone (+91…)',tgl:'Link Telegram contact',askp:'Ask a safety question',send:'Ask',key:'Your Gemini API key',sent:'SOS sent',call:'Call',fall:'Fall detected. Are you OK?',safe:"I'm safe now",sys:'Reply in English.',prot:'You are protected'},
+hi:{sos:'SOS',home:'होम',ct:'संपर्क',gd:'गाइड',tl:'टूल्स',ai:'AI से पूछें',st:'सेटिंग',lis:'सुन रहा है',off:'माइक बंद',msg:'सुरक्षित नहीं है, मुसीबत में है, लोकेशन:',cancel:'रद्द करें',ok:'मैं ठीक हूँ',sending:'SOS भेजा जाएगा',name:'आपका नाम क्या है?',go:'आगे बढ़ें',tap:'सुनना शुरू करने के लिए टैप करें',add:'संपर्क जोड़ें',nm:'नाम',ph:'फ़ोन (+91…)',tgl:'टेलीग्राम संपर्क जोड़ें',askp:'सुरक्षा का सवाल पूछें',send:'पूछें',key:'आपकी Gemini API key',sent:'SOS भेज दिया गया',call:'कॉल',fall:'गिरने का पता चला। क्या आप ठीक हैं?',safe:'मैं अब सुरक्षित हूँ',sys:'Reply in Hindi (Devanagari).',prot:'आप सुरक्षित हैं'},
+hn:{sos:'SOS',home:'Home',ct:'Contacts',gd:'Guide',tl:'Tools',ai:'AI se pucho',st:'Settings',lis:'Sun raha hai',off:'Mic band',msg:'safe nahi hai, problem mein hai, location:',cancel:'Cancel',ok:'Main theek hoon',sending:'SOS bhejne mein',name:'Aapka naam kya hai?',go:'Aage badhein',tap:'Sunna shuru karne ke liye tap karein',add:'Contact jodein',nm:'Naam',ph:'Phone (+91…)',tgl:'Telegram contact jodein',askp:'Safety ka sawal pucho',send:'Pucho',key:'Aapki Gemini API key',sent:'SOS bhej diya',call:'Call',fall:'Girne ka pata chala. Kya aap theek hain?',safe:'Main ab safe hoon',sys:'Reply in Hinglish (Hindi in Roman letters).',prot:'Aap surakshit hain'}};
 const T=()=>TX[S.lang||'en'];
 
 /* ---------- logo / manifest ---------- */
 const LG='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCADAAMADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5UooooAKKKKACilAycCpFt2P3sL9aqMHLZCbS3IqKsCBB1JNPEEf939a2WGmyXURUoq35Ef8Ad/Wl8iP+7+tP6rPuL2iKdFXfs8f939aPs8fTb+tNYSfdB7VFKir32eL+5+ppPs8f9z9af1OfdB7VFKirv2eL+5+pp32aL+5+pp/Up90HtUUKKu/ZY/7pH401rRezEUngqiD2sSpRUz2si9PmHtUXSuedOUNJItNPYSiiioGFFFFABRRRQAU+OIyH0A6miOMyNjoB1NTlhgKowBW1KnzavYmUraIVAqDCjn170vWm5pRXWtNDJjqKQGlrRMkUHFGQKSgc1QD80vWmgj0pQOaaZI6iilAya0TESQW7zuFRSTXX2Pwq8WahardW+hXzQsMq7JsDfTcRn8K9B+AfhGxS2fxRqNtHcyCYwWMMgyocAFpCDwcZAGeM5PatDxz8ZtOi1eW0SCW+2NtkmL4yf9ken+eK9Cjhk1eei7nlfX5Va8qNFX5dzxDV/Duo6LObfUbK4tJhzsljKkj1Hr+FZZTBwa95n1DTvEGiwyu5u9IumKOjj95bSDrj+6w6gjgjrXj3iTR30XVrqwdg5gkKB16OOzD6jB/GtcXgvZJTi7pnpq9tTGK0yWFJByOfUdam25NIVrz5RUlZopOxnSxNEeeR2PrUdaToGG1hkGqMsRibB6djXk4nDez96Ox0QnzEdFFFchoFFFPiGWz6c04q7sDJlGxAo696KTNFdu2iMhc0tJRTQh2aXNNzS1aZLQ4UYpM0oNWmIUU8UwcVLDBJcSLHEjSO5CqqjJYnsB3NUtSXpuJmlGc16x4Q+AOq6nFHda/dLpEDc+Tt3zke46L+Jz7V6JafCLwJo6Atp0moSL/HdzMQf+ArgV108LUlrY+fxHEmBpS5Iy5n5a/jsc98JtbRfB1rbk/8e1xNHIPTcdwP4g/pXAeKvh7r41+5ks9Lu722uJmeGW2iaQEE5x8ucGvaTBoVvC+n2OnWWnCYjDQRhMsOm49+v61yl9qmo6RM8CXE8DAkEK5X+VfS0MCsVRVN6SR5eXVZfW51aK0nrqZ1v4auvBvhCLTdRXy9Vv7n7S1rnLW8YXaocDozZJx1AxmvP/Gt0t5r10ykHZsiJHcoiqT+YNeiTJcWmhah4luRJJ9nAWIkZzMxwpPsOp+g9a8mhhe8uMGaIFjktJIFz7k1lmahRpwwsXdrc+4qKMKSV7y6jLexknkUKpOSKua1o0thqV1btGQYpWQ8ehr274I/DKw8QXyjUL3TZ41G4JBcq8gI54A7V0vx0+F2nWDyahY3NhbPdu0sguZxGck5wue1eH7SmqipPc5LS5eY+VZI9pwarzReYhXuOn1ra1XT/sszKbm0kwf+WUoYVlP17Gs6kE/dexcJGV0pKmuk2y57NzUNeBUhyScX0O5O6uFSxD5T9aiqReEqqXxA9hd3NOBqOnBq3TJaH0tNFLVXJFpRTaKaYD6XJpmaUHirTJsPBya+gvg14EttB0eDxLqEAfU7td9uHH/HvEehA/vMOc9gQPWvA7CAXd9b2+eJpUj/ADYD+tfXOpBbeMQQrsSICNQOwAwB+letldBVZ3fQ+J4yxlSFKnhabtz3v6K2nzv+Ay91ooSd/wCFYl1rm/ILc/WsvWr1LQbru5htkPRppAmfzrAfXdHJz/bFmQehDkj8wK+xo0KK0bVzwsrySU0pW0L+r3bTfMpIYVC2rWmuWqxahcR2t7bkBpZDgSx+v+8B1HfimQSW2oY+yXlvc+0cgJ/LrTH0SOeQeYgyD6Vq6fI1Okz7rCYD2ULF/UNWXXNDv7C1jZLCOylSNSOvyk7j7kgH8h2rw6FyCDmvoS002K20XUAqgf6JN/6LavnRX6fSvls092ornXTi7yPQPBfju98K3KTWMrRyEgMwOCRnpW38Tfife+KNUv4bmUvCk7+Tz9wZ6D29q8rSbGOaW4uGnmeQnlmJrl54v3upXK9ht1MXcmq+aVzk02uSc9bmsVZEF4Mqp9DVSrlz/qz9ap15OL/iXOqn8IU9fuimVIvIrGluWwopSKStiRc4p2aZTgapMGOoooqrkhRmiimgJrS4a0uobhBlonWQfUEH+let+Pvjo9+TaeF0aCNgDJeyp+8JI5CKfu46ZPPpivHqK1p4mdNNQdrnBissw+Kqwq1o3cL27a23XXYmury4v52nup5biVjlpJWLMfxNeg6boa3Hh6wm25Lwgk15uDzive/C9gJfBmjNjlrVT/Ove4amvrE+bqv1Rw57X+r0oOOmv6M81vdLe3k3pkEchhwRWxoPjjUNLlSHUC17a9Mt/rEHqG7/AENdFqej7y3yiuUv9MMb8JivuVhU9YGOCzJtLU9YhvobrQby4tpVkhls5ijDv+7b9favm5W4X6CvS/DOry6faalp8jnyZraVkH919h/mP5CvMk6D6V8ZxFSdOrC/VM9unKM480SwrdK6Lw74O1DxQRFpb2dxcNwtsblEmb/dViN34ZrmVNWLa4eGRSpIIOR7GvHoVFe0iakZNe7uamv+FNX8N3JttV0+6spf7s0ZXP0z1/CsYjFfWHhdh46+DcMPikC4/wBHm2TzcuoTOyTJ5yMde+Oa+U7kASECtsRSSTfY87L8f9YlOm94uzKlzzGap1buP9UaqV4eL+Neh7lLYKkU4Wo6evQVhDctjgc0EUhxSg+tapiaEpRRjBoq0IeKKBRVEhS05ImfoDWvo3hfVtdl8rTbCe5buUX5V+p6D8a3p0Zz0ijKpWhTXNN2RjUbSR0rsbvwdpmgca9rUKTgc2tl++k+hPQVm3Gu6baZXSNKjj9Jro+bJ+XQV1/UYw1rTUfxf3L9bHPDGqr/AAYuS77L73v8rmGttLt8zy22f3scV9I+DLff4E0JsA/6Gn8zXzldX9zey755mcnsen5V9PeBbff8P9APQmyQ/wA67MqlTjiH7K9rdf6/VnznF0pLDU3L+b9GY2oWgJJArmdTtNwIx9Diu6voDlgRXN6lAQDxX3mFqto+cy/EPQ4m4h8lJXHURv8A+gmvOlPA+leqahFi3uTgf6p//QTXmFlZ3F/OlvawyTSt0RBk181xZFyq0VFdH+aPvcpbnGS9BE5rs/AHgG78WXqSyh4dORh5k3d/9lPU+/arWj+BrDSYV1HxPdxQxLz5G7r7Ejlj7L+dW9d+LEiWh03w1EbC2C7PtGAshX0QD7g+nP0rzqOCjh0p4l2fbr8z1cXhKsKevut/f9x2nxS+IlpoehN4P0PYshjEE5jPy28Q/wCWY9WPf0Ge548Idy7FjSPK0rFnYkn1poNcOKxKqO0djzcDgKeEhyw66t92R3P+qNU6t3BzGaqV4uK+JHqU9gp6nimU9elYR3NBee9FHWjmtExCk5oHNFPijLsAOa1im9CW7DkUscAV0/hL4fa74xuxb6TYSz4+/J0SMerMeB/Ou6+FXwcj1mz/AOEk8UXA03QYVMpdzta4UdcE/dX/AGu/QU/4hfGiOS0PhzwNajRNBiypaEbJbj1JPVQfrk9z2r1aWGjTXNU/r+ux49bG1KsnSwurW7eyIrvw94H+HAK63djxHrKDmxtGxBGf9t+/0/SuU8RfE/Wtbh+xWzRaXp4GFtLFfLTHuRyazNG8G+JvFLg6Xo1/dq3/AC0WIiMf8DOF/Wu30n9nXxFcrv1XUdP0xcZ2BjPJ+S4X9a0lXqTXLRVkcfs8HQlz4uopT8+npFbfdfzPKXdmOSetR09xtYg9jimGvLk7vU+hQD7wNfWfw/jDfDnw6Rz/AKCn9a+S1OWFfX/w4T/i23hs4x/oKfzNd2WStUbPjeN03hKdv5v0ZXv7deTjBrmryxnvJGitoXlb0UZ//VXaagYIiWMRlPoTha5fWNVvWiaKNxbxf3IRt/Uc19vg6k38P4nyWWRUdajOd1LQLLS7S4l1u+RD5bk20B3ORtOee1eZXPjqCwtzZ+HdOisosYEzgGQ+/wD+vNdnrsRGn3sjHpC5JP8AumvG68/iPF1sPKmoS1aetlf0XVH6pkeO5aUlQXL59fv/AMrFy81G71GYz3c8s8h6tI2TUQPrUa04GvjnOUneTOybcndj6cGpo6UtCZmRz/6s1VqzP9yq1ceJ+JG1PYKcOlNpR0rGJYo604HNMpwPFWmIcDXc/CvwpB4k8Qob1d1jaqJp1/v88J+J6+wNcLXXeAfGh8J3cxkiaW2uFCyBT8y4PDD16nivSyx0/bx9q9Dzs0jWeGmsP8VtDuvjh49ubu5TwzZsIrC0CGRI+A744GB2UYwPWtr4LeDdFg8OR+ItUsIL2+u5GaD7Qu9YY1O0EKeNxIJz6YrzXxjLpHiK+fU9O1KFJJQDJDcZjO4DGQSMfhXrPhC5aLwdosaldq2iL8pyM85/XNfQwwvtcU07OKWltT5LMXOjltOjTvFt+90ezv8Aezv7jXuAgfAHAUdAPYVUOrh3ALdTiuXmvWH8VVmv/f8AWvbp4CNtD5qlhWj53v4zb31zC3BjldCPoxFVS2a674i+HJ9N1ebUoYy1jeOZA6jhHPLKfTnkeufauPr4DFUZ0KsqU1qmfrlCaqU4z7pDk++v1r7F+Hqsnwz8NBuD9gjOPrmvlnwP4L1Px14gt9H02Ji0hzLLj5YI/wCJ2PYAfmcCvskadBp1jbadaRsIbSFIIh/sqoA/lXTl0Wpcx8pxa1Upwore9zn9QTINc1f25ORgnNbviXxBo+gox1G/iik6iFfnkb6KOfzxXknifx7e63vtdNiazsm4JJ/eyD3I+6PYfnX3GXYerUs4rTufNZflOIrS0Vl3f9alDxprEU0dxYWjh0RGM0i8gkA/KPUDvXlNdxfwiz0e7lJxmPaPqeK4evH4vtGrSp9Ur/e/+AfpeDwkcNRjTj/w4DjNPFRjrTwa+SvY6WPpQaaDQCKdyLDZfuGq9Tyn5TioK5a/xI1hsFL2pKXtWKKEpQaKKoBwxinA0wGlBzVJ2EPLt617f8JtTTVfCX2POZtPkMbL32NllP8A6EPwrw4V0fgPxa/hDXo7xgz2ko8q5jXq0ZPUe46j8u9eplmN+r11N7bM8bPMDLF4SUKfxLVeq6fNHtt+jRDrWLcXRTI5rr7qG31KyjvLKWOe3mQPHKhyGU9xXIanZPHng4r9QwM4zSaZ8Bga6n7stGSaZqsDvJY3SRyQzjbtlAKk+hB4INUbvwV4WM/m/wBkRqwOSiyuqH8Af5Vh3pdGNXbHxSsqi31ByrjhZj0P+9/jWuLy6hVfNUin6o/Q8mxEHT9hUfo/0Oy0rxveeFNPfTtA0/R9MgblvIsxucjuzEksfrmsbVvGvifWNyT61cqh6pCRED/3yBVSVM/MGDKRkEcg1CqgN0p0MDhqOsaa+5G2KwUIty5U2Zv9nb2LsCWPJJ6mplsVHG0VpBQRwKqavqVtoVg15ckE9Io+8jen09TXRWxsaUHObskcuHpVJz12OT8dXi28MOmxn5mPmyfT+EfzNcZU9/fTaldy3U7bpJWLHHT6D2qvivyXNce8biZVnt09D2ZO7HAU7GKQcUteeQw6UZoNJTEJJ92oalkPFRVzVn7xcdgpaSisihaKKM1YB0pQaSigBwpelNBozVJiOy8C/Ee/8Gubcp9t02Q5ktnbGw92Q/wn9D39a9bsdY0TxhbebpN0kkmMvbt8syfVev4jIr5zFSRTSQSLLE7xyKcqynBB9iK9rLs6rYN2Wsex8/mXD1DFT9tTfJPutn6r9dz2rV9GZWOAcGuYvdJdR0zXOWnxD8R2qCNr/wC1IOguUEh/M8/rVlviLfSj95Y2RPqu4f1r7PD8XYOcbVk0/S5y0crxlHR2a9f8y3Hc6hpmRbTuin+A8qfwNTJ4q1Fchre3kx1O0r/WuduPFt3OSRb2yH1Ck/zNZtzqV3djEszFT/COB+QrHE8U4SC/cKTf3L+vke7h4V4q03odXeePr2EFY0tVf0QFsfUk4rlb/U7vVJzNdzvK56Fj0HoB2FVcZpfavkswzavjX+8do9jsDFKBQMCgkCvMEKKM0maTJouKw4mm7qD1pCcUnIdhrnJptFFcsnd3LCiiikAtFJS00wCgUYpaoBKKWkoAUGlzSUU7iFoxRml61SYB1oxSdKWqUhBg0Yoop8wBijFGcUZpcwAaM03NFTzBYcTTCc0E5pKiUr6DsFFFFQMKKKKACiiigApc0lFAC5ozSUU7gLR+NJRRcBfxpc4702inzAOz9KXI9aZRRzCsPyPWkznvTaKOYY7PvRkU2ijmCwuaSiilcAooopAFFFFAH//Z';
 const LOGO=(s=36)=>`<img src="${LG}" width="${s}" height="${s}" style="border-radius:22%" alt="JASHPI">`;
-const ICON=LG;
-$('#fav').href=ICON;$('#ati').href=ICON;
-(()=>{const u=location.origin+location.pathname,ic=[{src:ICON,sizes:'192x192',type:'image/jpeg'},{src:ICON,sizes:'512x512',type:'image/jpeg'}];
+$('#fav').href=LG;$('#ati').href=LG;
+(()=>{const u=location.origin+location.pathname,ic=[{src:LG,sizes:'192x192',type:'image/jpeg'},{src:LG,sizes:'512x512',type:'image/jpeg'}];
 const sc=[['SOS now','sos'],['Emergency guide','guide'],['Ask AI','ai']].map(([n,a])=>({name:n,short_name:n,url:u+'?a='+a,icons:ic}));
 $('#mf').href=URL.createObjectURL(new Blob([JSON.stringify({name:'JASHPI AI',short_name:'JASHPI',start_url:u,scope:u.replace(/[^/]*$/,''),display:'standalone',background_color:'#0B1030',theme_color:'#0B1030',icons:ic,shortcuts:sc})],{type:'application/manifest+json'}))})();
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(e=>log('sw '+e));
 
 /* ---------- SOS core ---------- */
-let busy=false,tid=null,wid=null,lastPos=null,lastT=0,siren=null;
+let busy=false,tid=null,wid=null,lastPos=null,lastT=0,siren=null,sir=false,sharing=false,batt='',heard='';
+navigator.getBattery&&navigator.getBattery().then(b=>batt=Math.round(b.level*100)).catch(()=>{});
 const pos=()=>new Promise(r=>navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude};r(lastPos)},()=>r(lastPos),{enableHighAccuracy:true,timeout:6000,maximumAge:15000}):r(lastPos));
 const post=(p,b)=>fetch(RELAY()+p,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b),keepalive:true}).then(r=>r.json());
-function track(){if(wid!=null||!navigator.geolocation)return;tid=tid||rnd(10);wid=navigator.geolocation.watchPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude};if(Date.now()-lastT>5000){lastT=Date.now();post('/track',{id:tid,name:S.name,...lastPos}).catch(()=>{})}},()=>{},{enableHighAccuracy:true})}
+function track(){tid=tid||rnd(10);if(wid!=null||!navigator.geolocation)return;wid=navigator.geolocation.watchPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude};if(Date.now()-lastT>5000){lastT=Date.now();post('/track',{id:tid,name:S.name,...lastPos}).catch(()=>{})}},e=>log('track '+e.message),{enableHighAccuracy:true})}
 function untrack(){if(wid!=null)navigator.geolocation.clearWatch(wid);wid=null;tid=null}
-function alarm(){try{const a=new AudioContext(),o=a.createOscillator(),g=a.createGain();o.type='square';o.connect(g);g.connect(a.destination);g.gain.value=.4;o.start();let f=700;siren=setInterval(()=>{f=f==700?1100:700;o.frequency.value=f},400);siren.stop=()=>{clearInterval(siren);o.stop();a.close()}}catch(e){}}
+function alarm(){stopAlarm();try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();a.resume&&a.resume();o.type='square';o.connect(g);g.connect(a.destination);g.gain.value=.5;o.start();let f=700;const iv=setInterval(()=>{f=f==700?1100:700;o.frequency.value=f},400);siren={stop(){clearInterval(iv);try{o.stop();a.close()}catch(e){}}};sir=true;sbar()}catch(e){log('siren '+e)}}
+function stopAlarm(){if(siren)siren.stop();siren=null;sir=false;sbar();if(tab=='tl')render()}
+const sbar=()=>$('#sirbar').classList.toggle('s',sir);
+function msgText(link,live){const med=[S.bg?'Blood '+S.bg:'',S.note||''].filter(Boolean).join(', ');return `${S.name||'User'} ${T().msg} ${link}`+(batt!==''?` | 🔋${batt}%`:'')+(med?` | ${med}`:'')+` | Live: ${live}`}
 async function sos(why,silent){
  if(busy)return;busy=true;setTimeout(()=>busy=false,20000);log('SOS: '+why);
  if(navigator.vibrate&&!silent)navigator.vibrate([400,150,400,150,400]);
  const p=await pos();track();
- const map=p?`https://maps.google.com/?q=${p.lat},${p.lng}`:'(location unavailable)',live=`${RELAY()}/t/${tid}`;
- const text=`${S.name||'User'} ${T().msg} ${map} | Live: ${live}`;
+ const map=p?`https://maps.google.com/?q=${p.lat},${p.lng}`:'(location unavailable)',text=msgText(map,`${RELAY()}/t/${tid}`);
  let r={};try{if(p)await post('/track',{id:tid,name:S.name,...p});r=await post('/sos',{code:S.code,ids:S.tg||[],text,...(p||{})})}catch(e){log('relay '+e);addEventListener('online',()=>post('/sos',{code:S.code,text}).catch(()=>{}),{once:true})}
  if(APP)try{Jashpi.sos(text,!!silent)}catch(e){}
  if(silent)return;
  alarm();const c=S.contacts||[],n=c.map(x=>x.phone.replace(/\D/g,''));
  if(!APP&&n[0]&&navigator.userActivation&&navigator.userActivation.isActive)location.href='tel:+'+n[0];
- sheet(`<h2>${T().sent}</h2><p class="mu">Telegram: ${r.sent||0}</p>`+
- (n.length?`<a class="btn opt" href="sms:${n.map(x=>'+'+x).join(',')}?body=${encodeURIComponent(text)}">SMS (all)</a>`+c.map((x,i)=>`<a class="btn opt" target="_blank" href="https://wa.me/${n[i]}?text=${encodeURIComponent(text)}">WhatsApp: ${esc(x.name)}</a>`).join('')+`<a class="btn opt" href="tel:+${n[0]}">${T().call} ${esc(c[0].name)}</a>`:'<p>Add contacts first.</p>')+
- `<a class="btn opt" href="tel:112">112</a><button class="g opt" onclick="closeSheet()">OK</button>`)}
+ sheet(`<h2>✅ ${T().sent}</h2><p class="mu">Telegram: ${r.sent||0}</p><button class="d opt" onclick="stopAlarm()">🔇 Stop siren</button>`+
+ (n.length?`<a class="btn opt" href="sms:${n.map(x=>'+'+x).join(',')}?body=${encodeURIComponent(text)}">SMS (all)</a>`+c.map((x,i)=>`<a class="btn opt" target="_blank" href="https://wa.me/${n[i]}?text=${encodeURIComponent(text)}">WhatsApp: ${esc(x.name)}</a>`).join('')+`<a class="btn opt" href="tel:+${n[0]}">📞 ${T().call} ${esc(c[0].name)}</a>`:'<p>Add contacts first.</p>')+
+ `<a class="btn opt" href="tel:112">112</a><button class="opt" onclick="imSafe()">🙂 ${T().safe}</button><button class="g opt" onclick="closeSheet()">OK</button>`)}
+async function imSafe(){const t=`${S.name||'User'}: ${T().safe} ✅`;try{await post('/sos',{code:S.code,ids:S.tg||[],text:t})}catch(e){}if(APP)try{Jashpi.sos(t,true)}catch(e){}stopAlarm();closeSheet()}
+let gT=0;
 function sheet(h){const o=$('#ov');o.innerHTML=h;o.classList.add('s')}
-function closeSheet(){if(siren&&siren.stop)siren.stop();siren=null;sir=false;$('#ov').classList.remove('s');if(!sharing)untrack()}
+function closeSheet(){clearInterval(gT);try{speechSynthesis.cancel()}catch(e){}stopAlarm();$('#ov').classList.remove('s');if(!sharing)untrack()}
 let cd=null;
 function ask(why,secs,msg){if(cd||busy)return;let n=secs;const draw=()=>sheet(`<div class="mu">${msg||T().sending}</div><div class="big">${n}</div><button class="d opt" onclick="stopCd()">${msg?T().ok:T().cancel}</button>`);draw();if(navigator.vibrate)navigator.vibrate(200);cd=setInterval(()=>{if(--n<=0){stopCd();sos(why)}else draw()},1000)}
 function stopCd(){clearInterval(cd);cd=null;closeSheet()}
 
-/* ---------- triggers: voice (SpeechRecognition) ---------- */
-const hits={bachao:[],help:[]},seen={};let rec=null,mic=APP,stats={bachao:0,help:0,cough:0};
-const RX={wake:/hello\s*j[ae]s?h?\s*p[iy]|hello\s*jaspi|हैलो\s*ज[शस]्?पी/,bachao:/bacha+o|bachav|बचाओ|बचाव/g,help:/\bhelp\b|हेल्प|madad|madat|मदद/g};
-function feed(i,t){
- if(S.off)return;
- if(RX.wake.test(t)&&!seen['w'+i]){seen['w'+i]=1;ask('wake word',5)}
- for(const k of['bachao','help']){const n=(t.match(RX[k])||[]).length,p=seen[k+i]||0;for(let j=p;j<n;j++)hits[k].push(Date.now());seen[k+i]=n;
-  hits[k]=hits[k].filter(x=>Date.now()-x<10000);stats[k]=hits[k].length;if(hits[k].length>=3){hits[k]=[];ask(k+' x3',5)}}
- draw()}
+/* ---------- voice triggers ---------- */
+const hits={bachao:[],help:[]},seen={};let rec=null,mic=APP,deny=false,stats={bachao:0,help:0,cough:0};
+const WK=/(hello|helo|hallo|hailo|hallow|हैलो|हेलो|हलो|हेल्लो)\s*(jash|jas|jaish|jesh|जश|जस|जैश|जैस|जेश|यश)\s*(p|b|f|्?प|्?ब)\s*(i|y|ee|ie|ी|ि)?/;
+const KW={bachao:/bacha+o|bachau|bachav|bachaw|bachha+o|bacho\b|बचाओ|बचाव|बचाऊ|बचा\s*ओ/g,help:/\bhelp\b|हेल्प|madad|madat|mdad|मदद|मदत/g};
+const flash=()=>{const h=$('#hs');if(h){h.classList.remove('f');h.offsetWidth;h.classList.add('f')}};
+function feed(i,alts){
+ if(S.off)return;if(typeof alts=='string')alts=[alts];alts=alts.map(x=>x.toLowerCase());
+ if(!seen['w'+i]&&alts.some(x=>WK.test(x))){seen['w'+i]=1;flash();ask('wake word',5)}
+ for(const k of['bachao','help']){let n=0;alts.forEach(x=>{n=Math.max(n,(x.match(KW[k])||[]).length)});const p=seen[k+i]||0;for(let j=p;j<n;j++)hits[k].push(Date.now());seen[k+i]=Math.max(p,n);
+  hits[k]=hits[k].filter(x=>Date.now()-x<10000);stats[k]=hits[k].length;if(hits[k].length>=3){hits[k]=[];stats[k]=0;flash();ask(k+' x3',5)}}
+ upd()}
 function listen(){
- const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(APP||!R||S.off)return log('speech API unavailable');
+ if(APP||S.off||deny)return;
+ const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R){heard='⚠ Voice needs Chrome';upd();return}
  try{rec&&(rec.onend=null,rec.abort())}catch(e){}
- rec=new R();rec.continuous=true;rec.interimResults=true;rec.lang=S.lang=='hi'?'hi-IN':'en-IN';
- rec.onstart=()=>{mic=true;for(const k in seen)delete seen[k];draw()};
- rec.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript.toLowerCase();const h=$('#heard');if(h)h.textContent=t.slice(-60);feed(i,t)}};
- rec.onerror=e=>{log('mic '+e.error);if(e.error=='not-allowed'||e.error=='service-not-allowed'){mic=false;draw()}};
- rec.onend=()=>{mic=false;if(!S.off)setTimeout(listen,400)};
- try{rec.start()}catch(e){}}
-/* cough: short, sudden loud burst; 3 within 10 s -> silent SOS */
+ rec=new R();rec.continuous=true;rec.interimResults=true;rec.maxAlternatives=4;rec.lang=S.lang=='en'?'en-IN':'hi-IN';
+ rec.onstart=()=>{mic=true;for(const k in seen)delete seen[k];upd()};
+ rec.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++){const alts=[];for(let j=0;j<e.results[i].length;j++)alts.push(e.results[i][j].transcript);heard='🎙 '+alts[0].slice(-50);feed(i,alts)}};
+ rec.onerror=e=>{log('mic '+e.error);if(e.error=='not-allowed'||e.error=='service-not-allowed'){deny=true;mic=false;heard='⚠ Mic blocked — tap Allow'}else if(e.error=='network')heard='⚠ Voice needs internet';else if(e.error=='audio-capture')heard='⚠ Mic busy — turn off Cough detection';upd()};
+ rec.onend=()=>{if(!S.off&&!deny)setTimeout(listen,300)};
+ try{rec.start()}catch(e){log('start '+e.message)}}
+/* cough (opt-in: some phones cannot share the mic with voice) */
 let cough=[],ctx=null;
 async function coughInit(){
- if(APP||ctx)return;try{const s=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false}});ctx=new AudioContext();const an=ctx.createAnalyser();an.fftSize=1024;ctx.createMediaStreamSource(s).connect(an);
- const d=new Float32Array(an.fftSize);let floor=.01,t0=0,peak=0;
+ if(APP||ctx||!S.cough)return;try{const st=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false}});ctx=new AudioContext();const an=ctx.createAnalyser();an.fftSize=1024;ctx.createMediaStreamSource(st).connect(an);
+ const d=new Float32Array(an.fftSize);let floor=.01,t0=0;
  setInterval(()=>{if(S.off)return;an.getFloatTimeDomainData(d);let e=0,z=0;for(let i=0;i<d.length;i++){e+=d[i]*d[i];if(i&&d[i]*d[i-1]<0)z++}const r=Math.sqrt(e/d.length),zc=z/d.length;
-  if(r>Math.max(.06,floor*5)&&zc>.04&&zc<.35){if(!t0){t0=Date.now();peak=r}}
-  else{if(t0){const L=Date.now()-t0;if(L>80&&L<500){cough.push(Date.now());cough=cough.filter(x=>Date.now()-x<10000);stats.cough=cough.length;log('cough '+cough.length);if(cough.length>=3){cough=[];sos('cough x3',true)}draw()}t0=0}floor=floor*.97+r*.03}},30)}catch(e){log('cough '+e.message)}}
-/* fall: free-fall then hard impact */
-let ff=0;function fallInit(){const go=()=>addEventListener('devicemotion',e=>{if(S.nofall)return;const a=e.accelerationIncludingGravity;if(!a)return;const m=Math.hypot(a.x,a.y,a.z);if(m<3)ff=Date.now();else if(m>28&&Date.now()-ff<1000){ff=0;ask('fall',15,T().fall)}});
+  if(r>Math.max(.06,floor*5)&&zc>.04&&zc<.35){if(!t0)t0=Date.now()}
+  else{if(t0){const L=Date.now()-t0;if(L>80&&L<500){cough.push(Date.now());cough=cough.filter(x=>Date.now()-x<10000);stats.cough=cough.length;if(cough.length>=3){cough=[];stats.cough=0;sos('cough x3',true)}upd()}t0=0}floor=floor*.97+r*.03}},30)}catch(e){log('cough '+e.message)}}
+/* fall + shake-to-SOS */
+let ff=0,sk=[];
+function motion(e){const a=e.accelerationIncludingGravity;if(!a)return;const m=Math.hypot(a.x||0,a.y||0,a.z||0),n=Date.now();
+ if(!S.nofall){if(m<3)ff=n;else if(m>28&&n-ff<1000){ff=0;ask('fall',15,T().fall);return}}
+ if(S.shake!==false&&m>24&&n-(sk[sk.length-1]||0)>220){sk.push(n);sk=sk.filter(x=>n-x<1700);if(sk.length>=5){sk=[];ask('shake',5)}}}
+let mi=false;function motionInit(){if(mi)return;mi=true;const go=()=>addEventListener('devicemotion',motion);
  if(window.DeviceMotionEvent&&DeviceMotionEvent.requestPermission)DeviceMotionEvent.requestPermission().then(r=>r=='granted'&&go()).catch(()=>{});else go()}
 async function wake(){try{if(S.awake)await navigator.wakeLock.request('screen')}catch(e){}}
-function start(){S.off=false;save();listen();coughInit();fallInit();wake();draw()}
+let lw=0;function watchLoc(){if(lw||!navigator.geolocation)return;lw=navigator.geolocation.watchPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude};upd()},e=>{log('loc '+e.message);upd()},{enableHighAccuracy:false,maximumAge:30000})}
+async function perm(){deny=false;if(!APP){try{(await navigator.mediaDevices.getUserMedia({audio:true})).getTracks().forEach(t=>t.stop())}catch(e){log('mic '+e.name);heard='⚠ Mic blocked — allow it in browser settings'}}
+ navigator.geolocation&&navigator.geolocation.getCurrentPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude};upd()},e=>log('loc '+e.message),{enableHighAccuracy:true,timeout:10000});
+ watchLoc();setTimeout(()=>{listen();coughInit()},400);upd()}
+function start(){S.off=false;save();deny=false;listen();coughInit();motionInit();wake();render()}
+function upd(){const c=$('#chip');if(c){const on=mic&&!S.off;c.className='chip'+(on?' on':'');c.textContent=on?T().lis:T().off}
+ [['c1','bachao'],['c2','help'],['c3','cough']].forEach(([i,k])=>{const e=$('#'+i);if(e)e.textContent=stats[k]+'/3'});
+ const h=$('#hs');if(h&&!h.classList.contains('f'))h.textContent=APP?'🎙 JASHPI service is listening':(heard||'🎙 …');
+ const p=$('#pm');if(p)p.textContent=`🎙 ${mic?'OK':'off'} · 📍 ${lastPos?'OK':'off'}`+(batt!==''?` · 🔋 ${batt}%`:'')}
 
-async function perm(){try{(await navigator.mediaDevices.getUserMedia({audio:true})).getTracks().forEach(t=>t.stop())}catch(e){log('mic '+e.name)}
- navigator.geolocation&&navigator.geolocation.getCurrentPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude};draw()},e=>log('loc '+e.message),{enableHighAccuracy:true,timeout:10000});
- if(!APP){listen();coughInit()}draw()}
-let lw=0;function watchLoc(){if(lw||!navigator.geolocation)return;lw=navigator.geolocation.watchPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude}},()=>{},{enableHighAccuracy:false,maximumAge:30000})}
 /* ---------- tools ---------- */
 const beep=(f,d)=>{try{const a=new AudioContext(),o=a.createOscillator();o.frequency.value=f;o.connect(a.destination);o.start();o.stop(a.currentTime+d)}catch(e){}};
-let sharing=false,mr=null,sir=false,cpr=0,sb=0;
-function tSiren(){if(sir){if(siren&&siren.stop)siren.stop();siren=null;sir=false}else{alarm();sir=true}draw()}
-function fake(){$('#fs').textContent='Ringing in 8 s…';setTimeout(()=>{const b=setInterval(()=>{navigator.vibrate&&navigator.vibrate(300);beep(440,.25)},900);sheet(`<div class="mu">Incoming call</div><h2>Mummy</h2><button class="opt" id="fa">Accept</button><button class="d opt" id="fd">Decline</button>`);
+let mr=null,cpr=0,sb=0;
+function tSiren(){sir?stopAlarm():alarm();if(tab=='tl')render()}
+function fake(){const e=$('#fs');e&&(e.textContent='Ringing in 8 s…');setTimeout(()=>{const b=setInterval(()=>{navigator.vibrate&&navigator.vibrate(300);beep(440,.25)},900);sheet(`<div class="mu">Incoming call</div><h2>Mummy</h2><button class="opt" id="fa">Accept</button><button class="d opt" id="fd">Decline</button>`);
  $('#fd').onclick=()=>{clearInterval(b);closeSheet()};$('#fa').onclick=()=>{clearInterval(b);let n=0;sheet('<h2>Mummy</h2><div class="big" id="ft">0:00</div><button class="d opt" id="fe">End</button>');const i=setInterval(()=>{n++;const e=$('#ft');e&&(e.textContent=Math.floor(n/60)+':'+String(n%60).padStart(2,'0'))},1000);$('#fe').onclick=()=>{clearInterval(i);closeSheet()}}},8000)}
-function strobe(){if(sb){clearInterval(sb);sb=0;const e=$('#sbx');e&&e.remove();return}const d=document.createElement('div');d.id='sbx';d.style.cssText='position:fixed;inset:0;z-index:20';d.onclick=strobe;document.body.append(d);let w=0;sb=setInterval(()=>d.style.background=(w^=1)?'#fff':'#000',120)}
+function strobe(){if(sb){clearInterval(sb);sb=0;const e=$('#sbx');e&&e.remove();return}const d=document.createElement('div');d.id='sbx';d.style.cssText='position:fixed;inset:0;z-index:40';d.onclick=strobe;document.body.append(d);let w=0;sb=setInterval(()=>d.style.background=(w^=1)?'#fff':'#000',120)}
 async function recAudio(){if(mr){mr.stop();return}try{const st=await navigator.mediaDevices.getUserMedia({audio:true}),ch=[];mr=new MediaRecorder(st);mr.ondataavailable=e=>ch.push(e.data);mr.onstop=()=>{st.getTracks().forEach(t=>t.stop());const u=URL.createObjectURL(new Blob(ch,{type:mr.mimeType}));mr=null;$('#rs').innerHTML=`<a class="btn" download="evidence.webm" href="${u}">Save recording</a>`};mr.start();$('#rs').textContent='● Recording… tap again to stop'}catch(e){log('rec '+e.name)}}
 function stim(m){clearTimeout(window._tm);window._tm=setTimeout(()=>ask('safety timer',20,'Are you safe?'),m*60000);$('#ts').textContent='Check-in in '+m+' min'}
 function near(q){const l=lastPos;open(l?`https://www.google.com/maps/search/${q}/@${l.lat},${l.lng},15z`:`https://www.google.com/maps/search/${q}+near+me`,'_blank')}
-async function shareLive(){const p=await pos();sharing=true;track();if(p)await post('/track',{id:tid,name:S.name,...p}).catch(()=>{});const u=`${RELAY()}/t/${tid}`;if(navigator.share)navigator.share({title:'Live location',text:(S.name||'')+' live location',url:u}).catch(()=>{});else navigator.clipboard.writeText(u);$('#ls').textContent=u}
-function stopShare(){sharing=false;untrack();$('#ls').textContent='Stopped'}
-function heart(){if(cpr){clearInterval(cpr);cpr=0}else cpr=setInterval(()=>beep(880,.08),545);draw()}
-/* ---------- first-aid guide (images generated by Pollinations) ---------- */
-const PI=p=>`https://image.pollinations.ai/prompt/${encodeURIComponent(p+', simple flat vector first aid illustration, bright colours, no text')}?width=640&height=400&seed=7&nologo=true&model=flux`;
+function shareLive(){tid=tid||rnd(10);sharing=true;const u=`${RELAY()}/t/${tid}`,txt=(S.name||'')+' live location';
+ if(APP)try{Jashpi.share(txt+' '+u)}catch(e){}else if(navigator.share)navigator.share({title:'Live location',text:txt,url:u}).catch(()=>{});else navigator.clipboard&&navigator.clipboard.writeText(u);
+ const e=$('#ls');e&&(e.innerHTML=`📍 <a href="${u}" target="_blank" style="color:var(--c)">${u}</a>`);track();if(!lastPos)pos()}
+function stopShare(){sharing=false;untrack();const e=$('#ls');e&&(e.textContent='Stopped')}
+function heart(){if(cpr){clearInterval(cpr);cpr=0}else cpr=setInterval(()=>beep(880,.08),545);render()}
+
+/* ---------- first-aid guide (images come from the relay, generated by Pollinations) ---------- */
 const G=[
-['woman performing CPR chest compressions on a training mannequin','CPR','CPR (दिल रुकना)','Check response, shout for help, call 112.|Place heel of hand on centre of chest.|Push hard and fast, 5-6 cm, 100-120 per minute.|If trained: 30 pushes then 2 breaths. Do not stop until help comes.','Response check karein, madad bulayein, 112 call karein.|Hatheli ki edi seene ke beech rakhein.|Zor se aur tez dabayein, 5-6 cm, 1 minute mein 100-120 baar.|Trained hain to 30 dabav ke baad 2 saans dein. Madad aane tak rukein nahi.'],
-['first aid for snake bite, bitten leg kept still with bandage','Snake bite','Saanp ka kaatna','Keep the person calm and still.|Call 112 and reach hospital fast.|Keep bitten limb below heart level, remove rings and tight items.|Do NOT cut, suck, tie tightly or apply ice. Remember snake colour/shape.','Vyakti ko shaant aur sthir rakhein.|112 call karein aur turant hospital jaayein.|Kata hua ang dil se neeche rakhein, anguthi aur tight cheezein utaarein.|Kaatein nahi, choosein nahi, kass ke baandhein nahi, baraf na lagayein. Saanp ka rang yaad rakhein.'],
-['Heimlich maneuver abdominal thrusts first aid on choking adult','Choking','Gale mein kuch atakna','If they cannot speak or cough, act now.|Give 5 back blows between the shoulder blades.|Give 5 abdominal thrusts above the navel.|Repeat until it comes out. If unconscious, start CPR.','Agar bol ya khaans na paayein to turant kaam karein.|Kandhon ke beech 5 baar peeth par thapki dein.|Naabhi ke upar 5 baar pet par dabav dein.|Nikalne tak dohrayein. Behosh ho jaaye to CPR shuru karein.'],
-['pressing clean cloth on bleeding wound first aid','Severe bleeding','Khoon behna','Press firmly on the wound with a clean cloth.|Do not remove the cloth; add more on top.|Raise the injured part if possible.|Keep pressing and call 112 for deep wounds.','Saaf kapde se ghaav ko kass ke dabayein.|Kapda hataayein nahi, upar se aur rakhein.|Ho sake to ghayal ang ooncha rakhein.|Dabate rahein aur gehre ghaav par 112 call karein.'],
-['cooling a burned hand under running tap water first aid','Burns','Jalna','Cool the burn under running water for 20 minutes.|Remove rings and loose clothes near the burn.|Cover loosely with clean cling film or cloth.|No ice, butter or toothpaste. Large burns need a hospital.','Jale hue hisse par 20 minute behte paani daalein.|Paas ki anguthi aur dheele kapde hataayein.|Saaf cling film ya kapde se halka dhakein.|Baraf, makkhan, toothpaste nahi. Bade jale par hospital jaayein.'],
-['person lying on back with legs raised after fainting first aid','Fainting','Chakkar / behoshi','Lay the person flat, raise legs about 30 cm.|Loosen tight clothes, give fresh air.|Check breathing. If none, start CPR.|When awake, give water slowly. Call 112 if no recovery in 1 minute.','Vyakti ko seedha litayein, pair 30 cm ooncha karein.|Tight kapde dheele karein, hawa aane dein.|Saans check karein. Na ho to CPR karein.|Hosh aane par dheere paani dein. 1 minute mein theek na ho to 112.'],
-['heart attack first aid, person sitting while helper calls emergency','Heart attack','Dil ka daura','Call 112 immediately and sit the person down.|Loosen clothes and keep them calm.|If conscious and not allergic, give 1 aspirin (300 mg) to chew.|If they stop breathing, start CPR.','Turant 112 call karein aur vyakti ko bithayein.|Kapde dheele karein, shaant rakhein.|Hosh mein hon aur allergy na ho to 1 aspirin (300 mg) chabane dein.|Saans ruk jaaye to CPR shuru karein.'],
-['recovery position first aid for seizure, cushion under head','Seizure','Daura / mirgi','Clear the area and cushion the head.|Do not hold them or put anything in the mouth.|Note the time the seizure started.|Afterwards turn them on their side. Call 112 if over 5 minutes.','Aas-paas jagah khaali karein, sir ke neeche gaddi rakhein.|Pakdein nahi, munh mein kuch na daalein.|Daura kab shuru hua, samay note karein.|Baad mein karwat par litayein. 5 minute se zyada ho to 112.'],
-['rinsing arm with running water first aid for chemical acid burn','Acid attack','Tezaab hamla','Call 112 now.|Pour clean running water for 20+ minutes.|Carefully remove contaminated clothes and jewellery.|Do not rub. Go to hospital and report to police.','Turant 112 call karein.|Saaf behte paani se 20+ minute dhoyein.|Bheege kapde aur gehne dhyaan se utaarein.|Ragdein nahi. Hospital jaayein aur police ko batayein.'],
-['woman self-defence escape move, safety training','Self-defence','Khud ki suraksha','Make noise: shout "FIRE" or press SOS.|Strike eyes, nose, throat or groin, then run.|Run to a lit, crowded place; leave belongings.|Call 112 / 1091 and share live location.','Shor machayein: "AAG" chillayein ya SOS dabayein.|Aankh, naak, gala ya groin par vaar karke bhaagein.|Roshni wali bheed wali jagah bhaagein, saamaan chhod dein.|112 / 1091 call karein aur live location bhejein.']];
-function gimg(d){if(d.open){const i=d.querySelector('img');if(!i.src)i.src=PI(i.dataset.p)}}
+[0,'CPR','CPR (दिल रुकना)','Check response, shout for help, call 112.|Place heel of hand on centre of chest.|Push hard and fast, 5-6 cm, 100-120 per minute.|If trained: 30 pushes then 2 breaths. Do not stop until help comes.','Response check karein, madad bulayein, 112 call karein.|Hatheli ki edi seene ke beech rakhein.|Zor se aur tez dabayein, 5-6 cm, 1 minute mein 100-120 baar.|Trained hain to 30 dabav ke baad 2 saans dein. Madad aane tak rukein nahi.','❤️'],
+[1,'Snake bite','Saanp ka kaatna','Keep the person calm and still.|Call 112 and reach hospital fast.|Keep bitten limb below heart level, remove rings and tight items.|Do NOT cut, suck, tie tightly or apply ice. Remember snake colour/shape.','Vyakti ko shaant aur sthir rakhein.|112 call karein aur turant hospital jaayein.|Kata hua ang dil se neeche rakhein, anguthi aur tight cheezein utaarein.|Kaatein nahi, choosein nahi, kass ke baandhein nahi, baraf na lagayein. Saanp ka rang yaad rakhein.','🐍'],
+[2,'Choking','Gale mein kuch atakna','If they cannot speak or cough, act now.|Give 5 back blows between the shoulder blades.|Give 5 abdominal thrusts above the navel.|Repeat until it comes out. If unconscious, start CPR.','Agar bol ya khaans na paayein to turant kaam karein.|Kandhon ke beech 5 baar peeth par thapki dein.|Naabhi ke upar 5 baar pet par dabav dein.|Nikalne tak dohrayein. Behosh ho jaaye to CPR shuru karein.','🫁'],
+[3,'Severe bleeding','Khoon behna','Press firmly on the wound with a clean cloth.|Do not remove the cloth; add more on top.|Raise the injured part if possible.|Keep pressing and call 112 for deep wounds.','Saaf kapde se ghaav ko kass ke dabayein.|Kapda hataayein nahi, upar se aur rakhein.|Ho sake to ghayal ang ooncha rakhein.|Dabate rahein aur gehre ghaav par 112 call karein.','🩸'],
+[4,'Burns','Jalna','Cool the burn under running water for 20 minutes.|Remove rings and loose clothes near the burn.|Cover loosely with clean cling film or cloth.|No ice, butter or toothpaste. Large burns need a hospital.','Jale hue hisse par 20 minute behte paani daalein.|Paas ki anguthi aur dheele kapde hataayein.|Saaf cling film ya kapde se halka dhakein.|Baraf, makkhan, toothpaste nahi. Bade jale par hospital jaayein.','🔥'],
+[5,'Fainting','Chakkar / behoshi','Lay the person flat, raise legs about 30 cm.|Loosen tight clothes, give fresh air.|Check breathing. If none, start CPR.|When awake, give water slowly. Call 112 if no recovery in 1 minute.','Vyakti ko seedha litayein, pair 30 cm ooncha karein.|Tight kapde dheele karein, hawa aane dein.|Saans check karein. Na ho to CPR karein.|Hosh aane par dheere paani dein. 1 minute mein theek na ho to 112.','😵'],
+[6,'Heart attack','Dil ka daura','Call 112 immediately and sit the person down.|Loosen clothes and keep them calm.|If conscious and not allergic, give 1 aspirin (300 mg) to chew.|If they stop breathing, start CPR.','Turant 112 call karein aur vyakti ko bithayein.|Kapde dheele karein, shaant rakhein.|Hosh mein hon aur allergy na ho to 1 aspirin (300 mg) chabane dein.|Saans ruk jaaye to CPR shuru karein.','💔'],
+[7,'Seizure','Daura / mirgi','Clear the area and cushion the head.|Do not hold them or put anything in the mouth.|Note the time the seizure started.|Afterwards turn them on their side. Call 112 if over 5 minutes.','Aas-paas jagah khaali karein, sir ke neeche gaddi rakhein.|Pakdein nahi, munh mein kuch na daalein.|Daura kab shuru hua, samay note karein.|Baad mein karwat par litayein. 5 minute se zyada ho to 112.','⚡'],
+[8,'Acid attack','Tezaab hamla','Call 112 now.|Pour clean running water for 20+ minutes.|Carefully remove contaminated clothes and jewellery.|Do not rub. Go to hospital and report to police.','Turant 112 call karein.|Saaf behte paani se 20+ minute dhoyein.|Bheege kapde aur gehne dhyaan se utaarein.|Ragdein nahi. Hospital jaayein aur police ko batayein.','🧪'],
+[9,'Self-defence','Khud ki suraksha','Make noise: shout "FIRE" or press SOS.|Strike eyes, nose, throat or groin, then run.|Run to a lit, crowded place; leave belongings.|Call 112 / 1091 and share live location.','Shor machayein: "AAG" chillayein ya SOS dabayein.|Aankh, naak, gala ya groin par vaar karke bhaagein.|Roshni wali bheed wali jagah bhaagein, saamaan chhod dein.|112 / 1091 call karein aur live location bhejein.','🥋']];
+const speak=t=>{try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=S.lang=='en'?'en-IN':'hi-IN';speechSynthesis.speak(u)}catch(e){}};
+function play(i){const g=G[i],hn=S.lang!='en',st=(hn?g[4]:g[3]).split('|');let n=0,rd=false;
+ sheet(`<div style="width:100%;max-width:420px"><div class="mu">${esc(hn?g[2]:g[1])}</div><div class="imgbox"><div class="em">${g[5]}</div><img alt="" src="${RELAY()}/img?i=${i}" onload="this.classList.add('ok')" onerror="this.remove()"></div><div class="dots" id="gd">${st.map(()=>'<i></i>').join('')}</div><h2 class="stp" id="gs"></h2><div class="row"><button class="g" id="gpv">◀</button><button id="gpr">🔊</button><button class="g" id="gpn">▶</button></div><button class="d opt" style="margin-top:10px" onclick="closeSheet()">✕</button></div>`);
+ const set=k=>{n=(k+st.length)%st.length;const e=$('#gs');e.style.animation='none';e.offsetHeight;e.style.animation='';e.textContent=(n+1)+'. '+st[n];document.querySelectorAll('#gd i').forEach((d,j)=>d.classList.toggle('on',j<=n));if(rd)speak(st[n])};
+ set(0);clearInterval(gT);gT=setInterval(()=>set(n+1),7000);
+ $('#gpv').onclick=()=>set(n-1);$('#gpn').onclick=()=>set(n+1);$('#gpr').onclick=()=>{rd=!rd;$('#gpr').textContent=rd?'🔇':'🔊';rd?speak(st[n]):speechSynthesis.cancel()}}
+
 /* ---------- Gemini ---------- */
 async function gem(q){
  const body={systemInstruction:{parts:[{text:'You are JASHPI, a women safety assistant. Answer in at most 5 very short key points, each on its own line starting with "• ". Plain text only: no markdown, no asterisks. If danger is mentioned, first point: advise calling 112 but never claim you placed a call and never offer to dial; only the user can call. '+T().sys}]},contents:[{parts:[{text:q}]}]};
- for(const m of['gemini-3-flash-preview','gemini-flash-latest','gemini-2.5-flash']){
+ const list=[...new Set([S.gmodel||'gemini-3.8-flash','gemini-3.8-flash','gemini-flash-latest','gemini-3-flash-preview'])];
+ for(const m of list){
   const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`,{method:'POST',headers:{'content-type':'application/json','x-goog-api-key':S.gkey},body:JSON.stringify(body)});
-  const j=await r.json();if(r.ok){const t=j.candidates?.[0]?.content?.parts?.map(p=>p.text).join('')||'';return t.replace(/[*#`_]/g,'').replace(/^\s*[-•]\s*/gm,'• ').trim()}
+  const j=await r.json();if(r.ok){const t=j.candidates?.[0]?.content?.parts?.map(p=>p.text).join('')||'';return {m,t:t.replace(/[*#`_]/g,'').replace(/^\s*[-•]\s*/gm,'• ').trim()}}
   if(r.status!=404&&r.status!=400)throw new Error(j.error?.message||r.status)}
  throw new Error('Model unavailable')}
 
-/* ---------- lock / calculator disguise / duress ---------- */
-let expr='',locked=false;
-function lock(){if(!S.pin)return;locked=true;expr='';calc()}
-function calc(){const d=!!S.disg,o=$('#ov');o.classList.add('s');
- const k=['7','8','9','÷','4','5','6','×','1','2','3','−','C','0','.','+'];
- o.innerHTML=`<div id="disp">${d?esc(expr||'0'):'•'.repeat(expr.length)||'PIN'}</div><div class="cal">${k.map(x=>`<button class="${'÷×−+'.includes(x)?'o':''}" data-k="${x}">${x}</button>`).join('')}<button style="grid-column:span 4" class="o" data-k="=">=</button></div>`;
- document.title=d?'Calculator':'JASHPI AI';
- o.querySelectorAll('[data-k]').forEach(b=>b.onclick=async()=>{const x=b.dataset.k;
-  if(x=='C')expr='';else if(x=='='){const h=await sha('p:'+expr);
-   if(h==S.pin){locked=false;expr='';o.classList.remove('s');document.title='JASHPI AI';return}
-   if(h==S.dpin){locked=false;expr='';o.classList.remove('s');document.title='JASHPI AI';sos('duress pin',true);return}
-   if(d){try{expr=String(Function('"use strict";return('+expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/[^0-9+\-*/.]/g,'')+')')()).slice(0,12)}catch(e){expr='Error'}}else expr=''}
-  else expr+=x;calc()})}
-addEventListener('visibilitychange',()=>{if(document.hidden)window._h=Date.now();else if(S.pin&&Date.now()-(window._h||0)>20000)lock()});
-
 /* ---------- views ---------- */
-let tab='home';
-function draw(){
- const t=T(),a=$('#app');
- if(!S.lang){a.innerHTML=`<div class="bar">${LOGO()}<b>JASHPI AI</b></div><h2>Choose language / भाषा चुनें</h2>`+[['en','English'],['hi','हिन्दी'],['hn','Hinglish']].map(([k,n])=>`<button class="opt" style="margin:8px 0;max-width:none" onclick="S.lang='${k}';save();draw()">${n}</button>`).join('');$('#nav').innerHTML='';return}
- if(!S.name){a.innerHTML=`<div class="bar">${LOGO()}<b>JASHPI AI</b></div><h2>${t.name}</h2><input id="nm" autocomplete="name" autofocus><button class="opt" style="max-width:none" id="go">${t.go}</button>`;$('#nav').innerHTML='';
-  $('#go').onclick=async()=>{const v=$('#nm').value.trim();if(!v)return;if(await sha('jashpi.v1:'+v)==DEV_HASH){S.dev=true;S.name='Developer'}else S.name=v;S.code=S.code||rnd(16);save();perm();watchLoc();start();draw()};return}
- if(!S.pin){a.innerHTML=`<div class="bar">${LOGO()}<b>JASHPI AI</b></div><h2>Set password</h2><p class="mu">App will look like a calculator. Type this password, then press = to open JASHPI.</p><input id="pw" inputmode="numeric" placeholder="Password (numbers)"><button class="opt" style="max-width:none" id="pb">${t.go}</button>`;$('#nav').innerHTML='';$('#pb').onclick=async()=>{const v=$('#pw').value.replace(/\D/g,'');if(v.length<3)return;S.pin=await sha('p:'+v);S.disg=true;save();draw();lock()};return}
- $('#nav').innerHTML=[['home',t.home],['ct',t.ct],['gd',t.gd],['tl',t.tl],['ai',t.ai],['st',t.st]].map(([k,n])=>`<button class="${tab==k?'a':''}" onclick="tab='${k}';draw()">${n}</button>`).join('');
- const bar=`<div class="bar">${LOGO()}<b>JASHPI AI</b><span class="chip ${mic&&!S.off?'on':''}">${mic&&!S.off?t.lis:t.off}</span></div>`;
- if(tab=='home')a.innerHTML=bar+`<div class="hero"><div class="ring ${mic?'live':''}"><button class="sosb" onclick="ask('button',5)">${t.sos}</button></div></div>
- <p class="mu" style="text-align:center;min-height:22px" id="heard"></p>
- ${mic?'':`<button class="opt" style="max-width:none" onclick="start()">${t.tap}</button>`}
- <div class="card row"><span class="mu" style="flex:2">🎙 ${mic?'Mic OK':'Mic off'} · 📍 ${lastPos?'Location OK':'Location off'}</span><button class="g" onclick="perm()">Allow</button></div>
- <div class="card"><div class="tg"><div>Bachao<b>${stats.bachao}/3</b></div><div>Help<b>${stats.help}/3</b></div><div>Cough<b>${stats.cough}/3</b></div></div><p class="mu">"Hello Jashpi" · "Bachao" ×3 · "Help me" / "Madad karo" ×3 · Cough ×3</p></div>`;
- if(tab=='ct'){const c=S.contacts||[];a.innerHTML=bar+`<h2>${t.ct}</h2><div class="card">${c.map((x,i)=>`<div class="ct"><span>${i?'':'★ '}${esc(x.name)}<br><small class="mu">${esc(x.phone)}</small></span><button class="g" onclick="S.contacts.splice(${i},1);save();draw()">✕</button></div>`).join('')||'<p class="mu">—</p>'}
-  <input id="cn" placeholder="${t.nm}"><input id="cp" type="tel" placeholder="${t.ph}"><button style="width:100%" id="ca">${t.add}</button></div>
-  <div class="card"><button class="g" style="width:100%" id="tgb">${t.tgl}</button><p class="mu" id="tgs"></p></div>`;
-  $('#ca')&&($('#ca').onclick=()=>{const n=$('#cn').value.trim(),p=$('#cp').value.trim();if(!n||p.replace(/\D/g,'').length<8)return;(S.contacts=S.contacts||[]).push({name:n,phone:p.startsWith('+')?p:'+'+p.replace(/\D/g,'')});save();draw()});
-  fetch(RELAY()+'/subs/'+S.code).then(r=>r.json()).then(j=>{S.tg=j.ids&&j.ids.length?j.ids:S.tg;save();$('#tgs').textContent=(j.count||0)+' Telegram linked'}).catch(()=>{});
-  $('#tgb').onclick=async()=>{try{const i=await fetch(RELAY()+'/info').then(r=>r.json()),u=`https://t.me/${i.bot}?start=${S.code}`;navigator.share?navigator.share({text:'Join my JASHPI safety alerts:',url:u}).catch(()=>{}):(navigator.clipboard.writeText(u),$('#tgs').textContent=u)}catch(e){$('#tgs').textContent='Relay offline'}}}
- if(tab=='gd'){const hn=S.lang!='en';a.innerHTML=bar+`<h2>${t.gd}</h2><div class="card"><div class="heart ${cpr?'b':''}">❤️</div><button style="width:100%" onclick="heart()">${cpr?'Stop':'CPR beat 110/min'}</button></div>`+G.map(g=>`<details ontoggle="gimg(this)"><summary>${esc(hn?g[2]:g[1])}</summary><img class="gi" alt="" data-p="${esc(g[0])}" onload="this.classList.add('ok')" onerror="this.style.display='none'"><ol>${(hn?g[5]:g[3]).split('|').map(x=>`<li>${esc(x)}</li>`).join('')}</ol></details>`).join('')+`<div class="card"><div class="row">${[['112','Emergency'],['100','Police'],['1091','Women'],['181','Women 24x7'],['102','Ambulance'],['108','Ambulance'],['1098','Child'],['1930','Cyber']].map(([n,l])=>`<a class="btn" href="tel:${n}">${n}<br><small>${l}</small></a>`).join('')}</div></div>`}
- if(tab=='tl')a.innerHTML=bar+`<h2>${t.tl}</h2><div class="tl"><button class="${sir?'d':''}" onclick="tSiren()">🔊 Siren</button><button onclick="fake()">📞 Fake call</button><button onclick="strobe()">🔦 Strobe</button><button onclick="recAudio()">🎙 Record</button><button onclick="shareLive()">📍 Share live</button><button class="g" onclick="stopShare()">⏹ Stop share</button><button onclick="near('police+station')">🚓 Police</button><button onclick="near('hospital')">🏥 Hospital</button><button onclick="near('pharmacy')">💊 Pharmacy</button><a class="btn" href="tel:112" style="background:var(--r)">112</a></div>
- <p class="mu" id="fs"></p><p class="mu" id="rs"></p><p class="mu" id="ls" style="word-break:break-all"></p>
- <div class="card"><h3>Safety timer</h3><div class="row">${[5,15,30,60].map(m=>`<button class="g" onclick="stim(${m})">${m} min</button>`).join('')}</div><p class="mu" id="ts">If you don't confirm, SOS is sent.</p></div>`;
- if(tab=='ai')a.innerHTML=bar+`<h2>${t.ai}</h2><div class="card"><input id="gk" type="password" placeholder="${t.key}" value="${esc(S.gkey||'')}"><textarea id="q" rows="3" placeholder="${t.askp}"></textarea><button style="width:100%" id="qa">${t.send}</button><p id="ans" style="white-space:pre-wrap"></p></div>`,
-  $('#qa').onclick=async()=>{S.gkey=$('#gk').value.trim();save();const q=$('#q').value.trim();if(!q||!S.gkey)return;$('#ans').textContent='…';try{$('#ans').textContent=await gem(q);if(/\b(call|dial|phone)\b|कॉल|112|1091/i.test(q))$('#ans').insertAdjacentHTML('afterend','<a class="btn" href="tel:112">112</a>')}catch(e){$('#ans').textContent='Error: '+e.message}};
- if(tab=='st')a.innerHTML=bar+`<h2>${t.st}</h2><div class="card"><h3>Language</h3><div class="row">${['en','hi','hn'].map(k=>`<button class="${S.lang==k?'':'g'}" onclick="S.lang='${k}';save();listen();draw()">${{en:'EN',hi:'हिं',hn:'Hinglish'}[k]}</button>`).join('')}</div><p class="mu">Alert code: <b>${S.code}</b></p></div>
- <div class="card"><h3>PIN</h3><input id="p1" inputmode="numeric" placeholder="New password"><input id="p2" inputmode="numeric" placeholder="Duress password (silent alert)"><div class="row"><button id="sp">Save</button><button class="g" onclick="lock()">Lock now</button></div></div>
- <div class="card"><label class="mu"><input type="checkbox" id="aw" style="width:auto" ${S.awake?'checked':''}> Keep screen awake</label><br><label class="mu"><input type="checkbox" id="nf" style="width:auto" ${S.nofall?'':'checked'}> Fall detection</label></div>
- ${S.dev?`<div class="card"><h3>Developer</h3><input id="rl" placeholder="Relay URL" value="${esc(S.relay||'')}"><div class="row"><button class="g" id="rs">Save</button><button class="g" onclick="sos('dev test',true)">Silent test</button><button class="g" onclick="feed(0,'bachao bachao bachao')">Bachao×3</button></div><pre id="log"></pre></div>`:''}`,
-  (()=>{$('#sp').onclick=async()=>{const a=$('#p1').value,b=$('#p2').value;if(a&&a!=b){S.pin=await sha('p:'+a);if(b)S.dpin=await sha('p:'+b)}S.disg=true;save();draw()};
-   $('#aw').onchange=e=>{S.awake=e.target.checked;save();wake()};$('#nf').onchange=e=>{S.nofall=!e.target.checked;save()};
-   if(S.dev){$('#rs').onclick=()=>{S.relay=$('#rl').value.trim();save()};$('#log').textContent=LOG.join('\n')}})();
-}
+let tab='home',ip=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();ip=e;if(tab=='st')render()});
+const go=k=>{tab=k;render();scrollTo(0,0)};
+const norm=p=>{const d=String(p).replace(/[^\d+]/g,'');return d.startsWith('+')?d:(d.length==10?'+91'+d:'+'+d.replace(/^0+/,''))};
+const bar=()=>`<div class="bar">${LOGO(40)}<b>JASHPI <i>AI</i></b><span id="chip" class="chip"></span></div>`;
+const rm=i=>{S.contacts.splice(i,1);save();render()};
+const mk=i=>{S.contacts.unshift(S.contacts.splice(i,1)[0]);save();render()};
+const vHome=t=>`<p class="hi">Hi, ${esc(S.name)} 👋</p><p class="mu" style="margin:0">${t.prot}</p>
+<div class="hero"><div class="ring ${mic?'live':''}"><i class="rp"></i><i class="rp r2"></i><button class="sosb" onclick="ask('button',5)">${t.sos}</button></div></div>
+<div class="heard" id="hs"></div>
+${mic?'':`<button class="opt" style="max-width:none" onclick="start()">${t.tap}</button>`}
+<div class="card tg"><div>Bachao<b id="c1">0/3</b></div><div>Help / Madad<b id="c2">0/3</b></div><div>Cough<b id="c3">0/3</b></div></div>
+<div class="card row"><span class="mu" id="pm" style="flex:2"></span><button class="g" onclick="perm()">Allow</button></div>
+<div class="grid4"><button onclick="tSiren()"><span>🔊</span>Siren</button><button onclick="go('tl');fake()"><span>📞</span>Fake call</button><button onclick="go('tl');shareLive()"><span>📍</span>Share live</button><button onclick="near('police+station')"><span>🚓</span>Police</button></div>`;
+const vCt=t=>{const c=S.contacts||[];return `<h2>${t.ct}</h2><div class="card">${c.map((x,i)=>`<div class="ct"><span>${i?'':'★ '}<b>${esc(x.name)}</b><br><small class="mu">${esc(x.phone)}</small></span>${i?`<button class="g" onclick="mk(${i})">★</button>`:''}<a class="btn" href="tel:${esc(x.phone)}">📞</a><button class="g" onclick="rm(${i})">✕</button></div>`).join('')||'<p class="mu">0 contacts</p>'}</div>
+<div class="card"><input id="cn" placeholder="${t.nm}" autocomplete="off"><input id="cp" type="tel" inputmode="tel" placeholder="${t.ph}" autocomplete="off"><button style="width:100%" id="ca">${t.add}</button><p class="mu" id="ce"></p>${navigator.contacts&&navigator.contacts.select?'<button class="g" style="width:100%" id="cpk">📇 Phone contacts</button>':''}</div>
+<div class="card"><button class="g" style="width:100%" id="tgb">${t.tgl}</button><p class="mu" id="tgs"></p></div>`};
+const vGd=t=>`<h2>${t.gd}</h2><div class="card"><div class="heart ${cpr?'b':''}">❤️</div><button style="width:100%" onclick="heart()">${cpr?'⏹ Stop':'▶ CPR beat 110/min'}</button></div><div class="gg">${G.map((g,i)=>`<button class="gc" onclick="play(${i})"><span class="em">${g[5]}</span>${esc(S.lang!='en'?g[2]:g[1])}</button>`).join('')}</div>
+<div class="card"><div class="row">${[['112','Emergency'],['100','Police'],['1091','Women'],['181','Women 24x7'],['102','Ambulance'],['108','Ambulance'],['1098','Child'],['1930','Cyber']].map(([n,l])=>`<a class="btn" href="tel:${n}" style="flex:1 1 40%">${n}<br><small>${l}</small></a>`).join('')}</div></div>`;
+const vTl=t=>`<h2>${t.tl}</h2><div class="tl"><button class="${sir?'d':''}" onclick="tSiren()">${sir?'🔇 Stop siren':'🔊 Siren'}</button><button onclick="fake()">📞 Fake call</button><button onclick="strobe()">🔦 Strobe</button><button onclick="recAudio()">🎙 Record</button><button onclick="shareLive()">📍 Share live</button><button class="g" onclick="stopShare()">⏹ Stop share</button><button onclick="near('police+station')">🚓 Police</button><button onclick="near('hospital')">🏥 Hospital</button><button onclick="near('pharmacy')">💊 Pharmacy</button><a class="btn" href="tel:112" style="background:var(--r)">📞 112</a></div>
+<p class="mu" id="fs"></p><p class="mu" id="rs"></p><p class="mu" id="ls" style="word-break:break-all"></p>
+<div class="card"><h3>⏱ Safety timer</h3><div class="row">${[5,15,30,60].map(m=>`<button class="g" onclick="stim(${m})">${m} min</button>`).join('')}</div><p class="mu" id="ts">If you don't confirm, SOS is sent.</p></div>`;
+const vAi=t=>`<h2>${t.ai}</h2><div class="card"><input id="gk" type="password" placeholder="${t.key}" value="${esc(S.gkey||'')}" autocomplete="off"><input id="gm" placeholder="Model (gemini-3.8-flash)" value="${esc(S.gmodel||'')}" autocomplete="off"><textarea id="q" rows="3" placeholder="${t.askp}"></textarea><button style="width:100%" id="qa">${t.send}</button><p id="ans" style="white-space:pre-wrap"></p><p class="mu" id="am"></p></div>`;
+const vSt=t=>`<h2>${t.st}</h2><div class="card"><h3>Language</h3><div class="row">${['en','hi','hn'].map(k=>`<button class="${S.lang==k?'':'g'}" onclick="S.lang='${k}';save();listen();render()">${{en:'EN',hi:'हिं',hn:'Hinglish'}[k]}</button>`).join('')}</div><p class="mu">Alert code: <b>${S.code}</b></p></div>
+<div class="card"><h3>🩺 Medical ID (sent with SOS)</h3><input id="bg" placeholder="Blood group (e.g. B+)" value="${esc(S.bg||'')}"><input id="nt" placeholder="Allergy / medicine / note" value="${esc(S.note||'')}"><button class="g" style="width:100%" id="ms">Save</button></div>
+<div class="card"><label class="mu"><input type="checkbox" id="sh" style="width:auto" ${S.shake===false?'':'checked'}> Shake phone 5× = SOS</label><br><label class="mu"><input type="checkbox" id="nf" style="width:auto" ${S.nofall?'':'checked'}> Fall detection</label><br><label class="mu"><input type="checkbox" id="co" style="width:auto" ${S.cough?'checked':''}> Cough detection (may block voice on some phones)</label><br><label class="mu"><input type="checkbox" id="aw" style="width:auto" ${S.awake?'checked':''}> Keep screen awake</label>${ip?'<button style="width:100%;margin-top:10px" onclick="ip.prompt()">⬇ Install app</button>':''}</div>
+${S.dev?`<div class="card"><h3>Developer</h3><input id="rl" placeholder="Relay URL" value="${esc(S.relay||'')}"><div class="row"><button class="g" id="rs2">Save</button><button class="g" onclick="sos('dev test',true)">Silent test</button><button class="g" onclick="feed(99,'bachao bachao bachao')">Bachao×3</button></div><pre id="log"></pre></div>`:''}`;
+const B={
+ct(){const add=()=>{const n=$('#cn').value.trim(),p=$('#cp').value.trim(),e=$('#ce');if(!n)return e.textContent='Enter name';if(p.replace(/\D/g,'').length<7)return e.textContent='Enter valid phone';(S.contacts=S.contacts||[]).push({name:n,phone:norm(p)});save();render()};
+ $('#ca').onclick=add;
+ const k=$('#cpk');k&&(k.onclick=async()=>{try{const r=await navigator.contacts.select(['name','tel'],{multiple:true});r.forEach(x=>{const p=(x.tel||[])[0];if(p)(S.contacts=S.contacts||[]).push({name:(x.name||[])[0]||'Contact',phone:norm(p)})});save();render()}catch(e){}});
+ fetch(RELAY()+'/subs/'+S.code).then(r=>r.json()).then(j=>{S.tg=j.ids&&j.ids.length?j.ids:S.tg;save();const e=$('#tgs');e&&(e.textContent=(j.count||0)+' Telegram linked')}).catch(()=>{});
+ $('#tgb').onclick=async()=>{try{const i=await fetch(RELAY()+'/info').then(r=>r.json()),u=`https://t.me/${i.bot}?start=${S.code}`;if(APP)Jashpi.share('Join my JASHPI safety alerts: '+u);else if(navigator.share)navigator.share({text:'Join my JASHPI safety alerts:',url:u}).catch(()=>{});else{navigator.clipboard.writeText(u);$('#tgs').textContent=u}}catch(e){$('#tgs').textContent='Relay offline'}}},
+ai(){$('#qa').onclick=async()=>{S.gkey=$('#gk').value.trim();S.gmodel=$('#gm').value.trim();save();const q=$('#q').value.trim();if(!q||!S.gkey)return;$('#ans').textContent='…';try{const r=await gem(q);$('#ans').textContent=r.t;$('#am').textContent='Model: '+r.m;if(/\b(call|dial|phone)\b|कॉल|112|1091/i.test(q))$('#ans').insertAdjacentHTML('afterend','<a class="btn" href="tel:112">📞 112</a>')}catch(e){$('#ans').textContent='Error: '+e.message}}},
+st(){$('#ms').onclick=()=>{S.bg=$('#bg').value.trim();S.note=$('#nt').value.trim();save();$('#ms').textContent='Saved ✓'};
+ $('#sh').onchange=e=>{S.shake=e.target.checked;save()};$('#nf').onchange=e=>{S.nofall=!e.target.checked;save()};$('#aw').onchange=e=>{S.awake=e.target.checked;save();wake()};
+ $('#co').onchange=e=>{S.cough=e.target.checked;save();if(S.cough)coughInit();else location.reload()};
+ if(S.dev){$('#rs2').onclick=()=>{S.relay=$('#rl').value.trim();save()};$('#log').textContent=LOG.join('\n')}}};
+function render(){
+ const t=T(),a=$('#app'),nv=$('#nav');
+ if(!S.lang){a.innerHTML=`<div class="bar">${LOGO(40)}<b>JASHPI <i>AI</i></b></div><h2>Choose language / भाषा चुनें</h2>`+[['en','English'],['hi','हिन्दी'],['hn','Hinglish']].map(([k,n])=>`<button class="opt" style="margin:8px 0;max-width:none" onclick="S.lang='${k}';save();render()">${n}</button>`).join('');nv.innerHTML='';return}
+ if(!S.name){a.innerHTML=`<div class="bar">${LOGO(40)}<b>JASHPI <i>AI</i></b></div><h2>${t.name}</h2><input id="nm" autocomplete="off" autofocus><button class="opt" style="max-width:none" id="go">${t.go}</button>`;nv.innerHTML='';
+  $('#go').onclick=async()=>{const v=$('#nm').value.trim();if(!v)return;if(await sha('jashpi.v1:'+v)==DEV_HASH){S.dev=true;S.name='Developer'}else S.name=v;S.code=S.code||rnd(16);save();perm();start()};return}
+ nv.innerHTML=[['home','🏠',t.home],['ct','👥',t.ct],['gd','🩺',t.gd],['tl','🧰',t.tl],['ai','✨',t.ai],['st','⚙️',t.st]].map(([k,i,n])=>`<button class="${tab==k?'a':''}" onclick="go('${k}')"><span>${i}</span>${n}</button>`).join('');
+ a.innerHTML=bar()+({home:vHome,ct:vCt,gd:vGd,tl:vTl,ai:vAi,st:vSt}[tab])(t);B[tab]&&B[tab]();upd()}
 /* ---------- boot ---------- */
-addEventListener('click',()=>{if(S.name&&!mic&&!S.off)listen()},{once:true});
+addEventListener('click',()=>{if(S.name&&!mic&&!S.off&&!deny)listen()},{once:true});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.name&&!APP){listen();wake()}});
 const A=new URLSearchParams(location.search).get('a');
 if(A)tab={guide:'gd',ai:'ai'}[A]||'home';
-draw();
-if(S.pin)lock();save();
-if(S.name){watchLoc();listen();coughInit();fallInit();wake();if(A=='sos')ask('shortcut',5)}
+render();save();
+if(S.name){watchLoc();listen();coughInit();motionInit();wake();if(A=='sos')ask('shortcut',5)}
 </script></body></html>

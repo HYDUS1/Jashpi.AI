@@ -5,6 +5,10 @@ const API=`https://api.telegram.org/bot${TOKEN}/`,HOOK=crypto.createHash('sha256
 const DB=path.join(process.env.DATA_DIR||__dirname,'subs.json');let subs={};try{subs=JSON.parse(fs.readFileSync(DB))}catch(e){}
 const saveDb=()=>fs.writeFile(DB,JSON.stringify(subs),()=>{});
 const tracks={},hits={};let botName='';
+const STYLE=', flat vector educational poster illustration, friendly cartoon characters, clean shapes, vibrant blue cyan purple palette, soft gradient background, high quality, no text, no watermark';
+const PROMPTS=['person performing CPR chest compressions on a mannequin, first aid','first aid for a snake bite on a leg, calm person sitting still, bandage','Heimlich maneuver abdominal thrusts helping a choking person','pressing a clean cloth on a bleeding wound, first aid','cooling a burned hand under running tap water','fainted person lying on back with legs raised, helper kneeling','person sitting having a heart attack, helper calling emergency number','recovery position first aid for seizure, cushion under head','rinsing an arm with running water after a chemical burn','woman confidently escaping, self defence safety training'];
+const IMGDIR=path.join(process.env.DATA_DIR||__dirname,'img');try{fs.mkdirSync(IMGDIR,{recursive:true})}catch(e){}
+const flying={};
 const tg=(m,b)=>fetch(API+m,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(r=>r.json());
 const ok=(r,c,b,t='application/json')=>{r.writeHead(c,{'content-type':t+'; charset=utf-8','access-control-allow-origin':'*','access-control-allow-headers':'content-type'});r.end(typeof b==='string'||Buffer.isBuffer(b)?b:JSON.stringify(b))};
 const body=q=>new Promise(r=>{let d='';q.on('data',c=>{d+=c;if(d.length>20000)q.destroy()});q.on('end',()=>{try{r(JSON.parse(d||'{}'))}catch(e){r({})}})});
@@ -18,6 +22,12 @@ http.createServer(async(q,s)=>{
  if(limited(ip)&&p!==`/tg/${HOOK}`)return ok(s,429,{error:'slow down'});
  try{
   if(p==='/info')return ok(s,200,{bot:botName});
+  if(p==='/img'){const i=Number(u.searchParams.get('i')),key=process.env.POLLINATIONS_KEY;if(!Number.isInteger(i)||!PROMPTS[i])return ok(s,400,{});
+   const f=path.join(IMGDIR,'g'+i+'.img');
+   if(!fs.existsSync(f)){if(!key)return ok(s,503,{error:'POLLINATIONS_KEY not set'});
+    flying[i]=flying[i]||fetch(`https://gen.pollinations.ai/image/${encodeURIComponent(PROMPTS[i]+STYLE)}?model=flux&width=640&height=400&seed=7&nologo=true`,{headers:{authorization:'Bearer '+key}}).then(async r=>{if(!r.ok)throw new Error('pollinations '+r.status);fs.writeFileSync(f,Buffer.from(await r.arrayBuffer()))}).finally(()=>delete flying[i]);
+    try{await flying[i]}catch(e){console.error(e.message);return ok(s,502,{error:'image failed'})}}
+   const b=fs.readFileSync(f);s.writeHead(200,{'content-type':b[0]===0x89?'image/png':'image/jpeg','cache-control':'public,max-age=31536000'});return s.end(b)}
   if(p===`/tg/${HOOK}`&&q.method==='POST'){const m=(await body(q)).message;
    const t=m&&m.text,c=t&&/^\/start\s+([a-z0-9]{16})$/.exec(t);
    if(c){const k=c[1];subs[k]=[...new Set([...(subs[k]||[]),m.chat.id])].slice(0,20);saveDb();tg('sendMessage',{chat_id:m.chat.id,text:'✅ You will now receive JASHPI safety alerts.'})}
@@ -30,9 +40,9 @@ http.createServer(async(q,s)=>{
   if(p==='/track'&&q.method==='POST'){const b=await body(q);if(!/^[a-z0-9]{10}$/.test(b.id||'')||!num(b.lat)||!num(b.lng))return ok(s,400,{});
    tracks[b.id]={lat:b.lat,lng:b.lng,name:String(b.name||'').slice(0,40),t:Date.now()};return ok(s,200,{})}
   if(p.startsWith('/t/')){const k=tracks[p.slice(3)],e=x=>String(x).replace(/[&<>"]/g,'');
-   if(!k)return ok(s,404,'<meta name=viewport content="width=device-width"><body style="font:18px sans-serif;padding:24px">Tracking link expired.</body>','text/html');
+   if(!k)return ok(s,404,'<meta http-equiv=refresh content=5><meta name=viewport content="width=device-width"><body style="font:18px sans-serif;padding:24px">Waiting for location… this page refreshes by itself. (If it stays blank, the link has expired.)</body>','text/html');
    const d=.004,src=`https://www.openstreetmap.org/export/embed.html?bbox=${k.lng-d},${k.lat-d},${k.lng+d},${k.lat+d}&layer=mapnik&marker=${k.lat},${k.lng}`;
-   return ok(s,200,`<!doctype html><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=refresh content=10><title>Live location</title><body style="margin:0;font:16px sans-serif"><div style="padding:12px;background:#0B1030;color:#fff"><b>${e(k.name)}</b> · updated ${Math.round((Date.now()-k.t)/1000)}s ago · <a style="color:#19D3F2" href="https://maps.google.com/?q=${k.lat},${k.lng}">Open in Maps</a></div><iframe src="${src}" style="border:0;width:100%;height:calc(100vh - 48px)"></iframe></body>`,'text/html')}
+   return ok(s,200,`<!doctype html><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=refresh content=5><title>Live location</title><body style="margin:0;font:16px sans-serif"><div style="padding:12px;background:#0B1030;color:#fff"><b>${e(k.name)}</b> · updated ${Math.round((Date.now()-k.t)/1000)}s ago · <a style="color:#19D3F2" href="https://maps.google.com/?q=${k.lat},${k.lng}">Open in Maps</a></div><iframe src="${src}" style="border:0;width:100%;height:calc(100vh - 48px)"></iframe></body>`,'text/html')}
   const f={'/':'index.html','/index.html':'index.html','/sw.js':'sw.js'}[p];
   if(f){const pub=path.join(__dirname,'public',f),alt=path.join(__dirname,f),file=fs.existsSync(pub)?pub:alt;
    return ok(s,200,fs.readFileSync(file),f.endsWith('.js')?'text/javascript':'text/html')}
